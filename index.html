@@ -1,267 +1,954 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LK TV SERIES HUB</title>
+<meta name="theme-color" content="#090909">
+<meta name="description" content="LK TV SERIES HUB - TV Series information, ratings, trailers and authorized content catalog.">
+<title>LK TV SERIES HUB | Premium Collection</title>
+
 <style>
 :root {
   --red: #ff2638;
-  --bg: #090909;
-  --card: #171717;
-  --muted: #b8b8b8;
+  --red-dark: #a90019;
+  --bg: #080808;
+  --card: rgba(255,255,255,.055);
+  --glass: rgba(255,255,255,.09);
+  --text: #f8f8f8;
+  --muted: #a8a8a8;
 }
-* { box-sizing: border-box; }
-body {
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: white;
+  padding: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, #270008 0, transparent 42%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 header {
-  text-align: center;
-  padding: 34px 16px;
-  background: linear-gradient(135deg, #240006, #090909 65%);
-  border-bottom: 2px solid var(--red);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(8,8,8,.76);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid rgba(255,255,255,.09);
 }
-.logo {
-  font-size: clamp(27px, 6vw, 44px);
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-.logo span { color: var(--red); }
-header p { color: #ddd; margin-bottom: 0; }
-.notice {
-  max-width: 1100px;
-  margin: 18px auto;
-  padding: 12px 16px;
-  color: #ffd8dc;
-  background: #21090c;
-  border: 1px solid #61202a;
-  border-radius: 10px;
-  text-align: center;
-}
-.controls {
-  max-width: 1100px;
-  margin: 20px auto;
-  padding: 0 16px;
+
+.nav {
+  max-width: 1250px;
+  margin: auto;
+  padding: 16px 20px;
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }
-input, select {
-  padding: 13px;
-  border-radius: 8px;
-  border: 1px solid #383838;
-  background: #171717;
+
+.logo {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -.7px;
+}
+
+.logo span {
+  color: var(--red);
+  text-shadow: 0 0 18px rgba(255,38,56,.65);
+}
+
+.nav-btn, .glass-btn {
+  border: 1px solid rgba(255,255,255,.2);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.16),
+    rgba(255,255,255,.035)
+  );
   color: white;
+  border-radius: 999px;
+  padding: 11px 17px;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-btn:hover, .glass-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--red);
+  box-shadow: 0 0 24px rgba(255,38,56,.24);
+}
+
+.glass-btn::before {
+  content: "";
+  position: absolute;
+  top: -80%;
+  left: -100%;
+  width: 60%;
+  height: 260%;
+  transform: rotate(25deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.22),
+    transparent
+  );
+  transition: left .7s;
+}
+
+.glass-btn:hover::before {
+  left: 150%;
+}
+
+.hero {
+  max-width: 1250px;
+  margin: auto;
+  padding: 70px 20px 42px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 13px;
+  border: 1px solid rgba(255,38,56,.42);
+  background: rgba(255,38,56,.09);
+  color: #ff7b86;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(35px, 7vw, 72px);
+  line-height: 1.05;
+  font-weight: 950;
+  letter-spacing: -2px;
+  max-width: 850px;
+}
+
+.hero h1 span {
+  color: var(--red);
+  text-shadow: 0 0 35px rgba(255,38,56,.32);
+}
+
+.hero p {
+  max-width: 650px;
+  color: #bbb;
+  line-height: 1.8;
+  margin-top: 18px;
   font-size: 15px;
 }
-input { flex: 1; min-width: 190px; }
-select { min-width: 145px; }
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #ff394a, #a80019);
+  border: 1px solid rgba(255,255,255,.25);
+  box-shadow: 0 6px 28px rgba(255,38,56,.22);
+}
+
+.primary-btn:hover {
+  box-shadow: 0 8px 35px rgba(255,38,56,.4);
+}
+
 main {
-  max-width: 1100px;
+  max-width: 1250px;
   margin: auto;
-  padding: 0 16px 30px;
+  padding: 0 20px 60px;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 28px 0 20px;
 }
-.card {
-  background: var(--card);
-  border: 1px solid #303030;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform .2s, border-color .2s;
-}
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--red);
-}
-.poster {
-  min-height: 105px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 18px 12px;
-  background: linear-gradient(135deg, #360008, #171717 75%);
-  border-bottom: 1px solid #333;
-  font-weight: 900;
-  font-size: 23px;
-  overflow-wrap: anywhere;
-}
-.info { padding: 15px; }
-.info h2 { font-size: 18px; margin: 0 0 8px; }
-.price {
-  color: var(--red);
-  font-size: 22px;
-  font-weight: bold;
-  margin: 12px 0;
-}
-.order {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  background: var(--red);
-  color: white;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: bold;
-}
-.order:hover { background: #d81729; }
-.section-title {
-  margin: 28px 0 16px;
+
+.section-heading h2 {
   font-size: 24px;
 }
-.payment {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin: 15px 0;
+
+.section-heading h2 span {
+  color: var(--red);
 }
-.payment span {
-  padding: 11px 16px;
-  border-radius: 8px;
-  border: 1px solid #393939;
-  background: #171717;
-}
-footer {
-  text-align: center;
-  padding: 25px 16px;
-  border-top: 1px solid #333;
+
+.muted {
   color: var(--muted);
+  font-size: 13px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.field {
+  min-width: 0;
+  width: 100%;
+  padding: 14px 16px;
+  color: white;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 15px;
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(255,38,56,.1);
+}
+
+select option {
+  background: #171717;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 18px;
+}
+
+.card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.105);
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.075),
+    rgba(255,255,255,.025)
+  );
+  border-radius: 20px;
+  transition: transform .28s, border-color .28s, box-shadow .28s;
+  animation: rise .5s both;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,38,56,.58);
+  box-shadow: 0 14px 35px rgba(0,0,0,.3), 0 0 20px rgba(255,38,56,.09);
+}
+
+.cover {
+  min-height: 175px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,.15), transparent 28%),
+    linear-gradient(140deg, var(--c1), var(--c2));
+}
+
+.cover::before {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  right: -45px;
+  top: -65px;
+  border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 0 0 0 18px rgba(255,255,255,.025),
+              0 0 0 38px rgba(255,255,255,.02);
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,.62), transparent 85%);
+}
+
+.cover-title {
+  position: relative;
+  z-index: 1;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  text-shadow: 0 3px 12px rgba(0,0,0,.45);
+}
+
+.cover-label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.2);
+  padding: 6px 9px;
+  border-radius: 99px;
+  backdrop-filter: blur(8px);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.rating {
+  color: #ffd166;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.genre {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.meta {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 13px 0;
+}
+
+.pill {
+  font-size: 11px;
+  color: #ddd;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.065);
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+.description {
+  font-size: 13px;
+  color: #c8c8c8;
+  line-height: 1.75;
+  min-height: 68px;
+  margin-bottom: 14px;
+}
+
+.price {
+  color: #ff6876;
+  font-size: 21px;
+  font-weight: 900;
+  margin: 13px 0;
+}
+
+.card-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+.card-actions .glass-btn {
+  text-align: center;
+  font-size: 12px;
+  padding: 11px 9px;
+}
+
+.empty {
+  display: none;
+  text-align: center;
+  padding: 45px 10px;
+  color: var(--muted);
+}
+
+.panel {
+  margin-top: 45px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,255,255,.075), rgba(255,255,255,.025));
+  backdrop-filter: blur(18px);
+}
+
+.panel h2 {
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+
+.panel p {
+  color: #c5c5c5;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.price-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.price-item {
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(0,0,0,.2);
+}
+
+.price-item b {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.price-item span {
+  color: var(--red);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+footer {
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: 30px 20px;
+  text-align: center;
+  color: #999;
+  font-size: 12px;
   line-height: 1.8;
 }
-footer a { color: #ff5260; }
-.empty { text-align: center; color: #bbb; padding: 25px; }
+
+footer strong {
+  color: white;
+}
+
+.no-trailer {
+  opacity: .6;
+  cursor: default;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .price-list { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+
+@media (max-width: 680px) {
+  .nav { padding: 13px 14px; }
+  .logo { font-size: 17px; }
+  .nav-btn { padding: 10px 12px; font-size: 12px; }
+  .hero { padding: 48px 16px 30px; }
+  main { padding: 0 14px 45px; }
+  .grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 11px; }
+  .cover { min-height: 145px; padding: 12px; }
+  .cover-title { font-size: 19px; }
+  .card-body { padding: 11px; }
+  .card-title { font-size: 14px; }
+  .description { font-size: 12px; min-height: 0; }
+  .price { font-size: 18px; }
+  .card-actions .glass-btn { font-size: 11px; padding: 10px 6px; }
+  .controls { grid-template-columns: 1fr; }
+  .panel { padding: 18px; }
+  .price-list { gap: 8px; }
+}
+
+@media (max-width: 360px) {
+  .grid { grid-template-columns: 1fr; }
+  .cover { min-height: 185px; }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">LK <span>TV SERIES HUB</span></div>
-  <p>Your Series Collection • Sinhala Subtitles</p>
+  <nav class="nav">
+    <a class="logo" href="#"><span>LK</span> TV SERIES HUB</a>
+    <a class="nav-btn" href="#series">🎬 Browse Series</a>
+  </nav>
 </header>
 
-<div class="notice">
-  🎬 Browse the collection below and contact us on WhatsApp to enquire.
-</div>
-
-<div class="controls">
-  <input id="search" type="search" placeholder="🔎 Search TV series...">
-  <select id="sort">
-    <option value="default">Default order</option>
-    <option value="low">Price: Low to High</option>
-    <option value="high">Price: High to Low</option>
-    <option value="az">Name: A–Z</option>
-  </select>
-</div>
+<section class="hero">
+  <span class="badge">PREMIUM SERIES COLLECTION</span>
+  <h1>YOUR NEXT<br><span>WORLD TO EXPLORE.</span></h1>
+  <p>
+    ඔයා කැමති TV Series එක සොයාගන්න. Ratings, genres, episodes,
+    සිංහල විස්තර සහ trailers එකම තැනකින් බලන්න.
+  </p>
+  <div class="hero-actions">
+    <a class="glass-btn primary-btn" href="#series">Explore Series ↗</a>
+    <a class="glass-btn" href="#pricing">Episode Pricing</a>
+  </div>
+</section>
 
 <main>
-  <h2 class="section-title">🔥 TV SERIES COLLECTION</h2>
-  <div id="seriesGrid" class="grid"></div>
-  <p id="empty" class="empty" hidden>No series found. Try another search.</p>
+  <section id="series">
+    <div class="section-heading">
+      <h2>Explore <span>Series</span></h2>
+      <span class="muted" id="resultCount"></span>
+    </div>
 
-  <h2 class="section-title">💳 Payment Methods</h2>
-  <div class="payment">
-    <span>🏦 Bank Transfer</span>
-    <span>📱 eZ Cash</span>
-    <span>📲 Reload</span>
-  </div>
-  <p style="text-align:center;color:#bbb">
-    Contact us on WhatsApp to confirm availability and payment details.
-  </p>
+    <div class="controls">
+      <input
+        class="field"
+        type="search"
+        id="search"
+        placeholder="🔎 Search TV Series..."
+        aria-label="Search TV Series"
+      >
+      <select class="field" id="genreFilter" aria-label="Filter by genre">
+        <option value="all">All Genres</option>
+        <option value="Action">Action</option>
+        <option value="Crime">Crime</option>
+        <option value="Drama">Drama</option>
+        <option value="Fantasy">Fantasy</option>
+        <option value="Horror">Horror</option>
+        <option value="Mystery">Mystery</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Thriller">Thriller</option>
+        <option value="Comedy">Comedy</option>
+        <option value="War">War</option>
+        <option value="Historical">Historical</option>
+      </select>
+    </div>
+
+    <div class="grid" id="seriesGrid"></div>
+    <div class="empty" id="empty">😕 No series found. Try another search.</div>
+  </section>
+
+  <section class="panel" id="pricing">
+    <h2>💰 Episode <span style="color:var(--red)">Pricing</span></h2>
+    <p>
+      මෙම pricing list එක අලුතින් එකතු කරන Series සඳහා පමණයි.
+      කලින් තිබුණු Series වල මිල ගණන් වෙනස් කරලා නැහැ.
+    </p>
+    <div class="price-list">
+      <div class="price-item"><b>1–14 Episodes</b><span>Rs. 150</span></div>
+      <div class="price-item"><b>15–29 Episodes</b><span>Rs. 200</span></div>
+      <div class="price-item"><b>30–50 Episodes</b><span>Rs. 300</span></div>
+      <div class="price-item"><b>51–59 Episodes</b><span>Rs. 400</span></div>
+      <div class="price-item"><b>60–69 Episodes</b><span>Rs. 450</span></div>
+      <div class="price-item"><b>70–90 Episodes</b><span>Rs. 500</span></div>
+      <div class="price-item"><b>91–129 Episodes</b><span>Rs. 550</span></div>
+      <div class="price-item"><b>130+ Episodes</b><span>Rs. 600</span></div>
+    </div>
+  </section>
+
+  <section class="panel" id="payment">
+    <h2>📩 Contact & <span style="color:var(--red)">Orders</span></h2>
+    <p>
+      Series පිළිබඳ විස්තර විමසීමට
+      WhatsApp හරහා සම්බන්ධ වෙන්න.
+    </p>
+    <br>
+    <a
+      class="glass-btn primary-btn"
+      href="https://wa.me/94714540217"
+      target="_blank"
+      rel="noopener noreferrer"
+    >💬 WhatsApp Contact</a>
+    <p style="margin-top:18px">
+      Payment methods: Bank Transfer · eZ Cash · Reload<br>
+      ගෙවීමට පෙර මිල සහ ලබාදෙන sereis  එක තහවුරු කරගන්න.
+    </p>
+  </section>
 </main>
 
 <footer>
-  <strong style="color:white">LK TV SERIES HUB</strong><br>
-  WhatsApp: <a href="https://wa.me/94714540217" target="_blank" rel="noopener">+94 71 454 0217</a><br>
-  <span>© <span id="year"></span> LK TV SERIES HUB</span>
+  <strong>LK TV SERIES HUB</strong><br>
+  Series information, ratings and trailer links for discovery.<br>
+  Use this catalog only for content you are authorized to distribute.
 </footer>
 
 <script>
-const WHATSAPP_NUMBER = "94714540217";
-
 const series = [
-  {name:"Breaking Bad", price:400},
-  {name:"Sex Education", price:300},
-  {name:"Vikings: Valhalla", price:200},
-  {name:"Game of Thrones", price:500},
-  {name:"Prison Break", price:450},
-  {name:"Peaky Blinders", price:350},
-  {name:"The Walking Dead", price:600},
-  {name:"Money Heist", price:450},
-  {name:"Teen Wolf", price:400},
-  {name:"The Last Ship", price:300},
-  {name:"Stranger Things", price:400},
-  {name:"Reacher", price:300},
-  {name:"True Blood", price:450},
-  {name:"The Flash", price:500},
-  {name:"IT: Welcome to Derry", price:100},
-  {name:"House of the Dragon", price:250},
-  {name:"One Piece", price:200},
-  {name:"Robinhood (2026)", price:100},
-  {name:"Lost", price:600},
-  {name:"Outer Banks", price:450},
-  {name:"Kingdom", price:250},
-  {name:"From", price:300},
-  {name:"Dark", price:300},
-  {name:"Duty After School", price:150},
-  {name:"Cobra Kai", price:350},
-  {name:"The 100", price:500},
-  {name:"Lucifer", price:500},
-  {name:"All of Us Are Dead", price:150},
-  {name:"Squid Game", price:300}
+  {
+    name: "Breaking Bad", rating: "9.5",
+    genre: "Crime, Drama", seasons: 5, episodes: 62,
+    price: 400, old: true, colors: ["#174b36","#101f19"],
+    trailer: "https://youtu.be/HhesaQXLuRY",
+    desc: "සාමාන්‍ය රසායන විද්‍යා ගුරුවරයෙකුගේ ජීවිතය අනපේක්ෂිත තීරණ නිසා සම්පූර්ණයෙන් වෙනස් වන අපරාධ නාට්‍යයකි."
+  },
+  {
+    name: "Sex Education", rating: "8.2",
+    genre: "Comedy, Drama", seasons: 4, episodes: 32,
+    price: 300, old: true, colors: ["#713c8b","#25173c"],
+    trailer: "https://youtu.be/o308rJlJx0c",
+    desc: "පාසල් ජීවිතය, මිත්‍රත්වය සහ සම්බන්ධතා ගැන හාස්‍යයත් හැඟීම්ත් සමඟ කියවෙන කතා මාලාවකි."
+  },
+  {
+    name: "Vikings: Valhalla", rating: "7.3",
+    genre: "Action, Drama, Historical", seasons: 3, episodes: 24,
+    price: 200, old: true, colors: ["#52605b","#17221f"],
+    trailer: "https://youtu.be/yi0hwfdQyDk",
+    desc: "වයිකිං යුගයේ ගවේෂණ, සටන් සහ බල අරගල මැද නව වීරයන්ගේ ගමන පෙන්වයි."
+  },
+  {
+    name: "Game of Thrones", rating: "9.2",
+    genre: "Fantasy, Drama", seasons: 8, episodes: 73,
+    price: 500, old: true, colors: ["#75503b","#211515"],
+    trailer: "https://youtu.be/gcTkNV5Vg1E",
+    desc: "මනඃකල්පිත රාජධානිවල සිංහාසනය සඳහා සිදුවන දේශපාලන කුමන්ත්‍රණ, සටන් සහ බල අරගල ගැන කතාවකි."
+  },
+  {
+    name: "Prison Break", rating: "8.3",
+    genre: "Action, Crime, Drama", seasons: 5, episodes: 90,
+    price: 450, old: true, colors: ["#65716c","#1c2728"],
+    trailer: "https://youtu.be/AL9zLctDJaU",
+    desc: "තම සහෝදරයා බේරාගැනීමට සැලසුම් සහගතව සිරගෙදරට ඇතුළු වන මිනිසෙකුගේ ත්‍රාසජනක මෙහෙයුමකි."
+  },
+  {
+    name: "Peaky Blinders", rating: "8.7",
+    genre: "Crime, Drama", seasons: 6, episodes: 36,
+    price: 350, old: true, colors: ["#535353","#161616"],
+    trailer: "https://youtu.be/oVzVdvGIC7U",
+    desc: "පළමු ලෝක යුද්ධයෙන් පසු බර්මින්හැම් නගරයේ බලය ව්‍යාප්ත කරන අපරාධ පවුලක කතාවකි."
+  },
+  {
+    name: "The Walking Dead", rating: "8.1",
+    genre: "Drama, Horror", seasons: 11, episodes: 177,
+    price: 600, old: true, colors: ["#66674c","#202116"],
+    trailer: "https://youtu.be/sfAc2U20uyg",
+    desc: "සොම්බි ව්‍යසනයකින් පසු ජීවිතය රැකගැනීමට උත්සාහ කරන පිරිසකගේ දිගු ගමන පෙන්වයි."
+  },
+  {
+    name: "Money Heist", rating: "8.2",
+    genre: "Crime, Thriller", seasons: 5, episodes: 41,
+    price: 450, old: true, colors: ["#8d2228","#321015"],
+    trailer: "https://youtu.be/_InqQJRqQn8",
+    desc: "අභිරහස් සැලසුම්කරුවෙකුගේ නායකත්වයෙන් සිදුවන විශාල මංකොල්ල මෙහෙයුම් ගැන කතාවකි."
+  },
+  {
+    name: "Teen Wolf", rating: "7.7",
+    genre: "Drama, Fantasy", seasons: 6, episodes: 100,
+    price: 400, old: true, colors: ["#25475d","#101b28"],
+    trailer: "https://youtu.be/1HmRrQjYd5w",
+    desc: "සාමාන්‍ය පාසල් සිසුවෙකුගේ ජීවිතය අද්භූත වෙනසක් සමඟ හැරෙන අතර මිතුරන් සමඟ අලුත් අභියෝගවලට මුහුණ දෙයි."
+  },
+  {
+    name: "Stranger Things", rating: "8.6",
+    genre: "Sci-Fi, Horror, Mystery", seasons: 5, episodes: 42,
+    price: 400, old: true, colors: ["#5b1119","#160c17"],
+    trailer: "https://youtu.be/b9EkMc79ZSU",
+    desc: "කුඩා නගරයක අතුරුදන්වීම්, රහස් පරීක්ෂණ සහ වෙනත් මානයකින් පැමිණෙන අද්භූත බලවේග එකට බැඳෙයි."
+  },
+  {
+    name: "Reacher", rating: "8.0",
+    genre: "Action, Crime", seasons: 3, episodes: 24,
+    price: 300, old: true, colors: ["#675039","#1d1b18"],
+    trailer: "https://youtu.be/GSycMV-_Csw",
+    desc: "හිටපු හමුදා පොලිස් නිලධාරියෙකු විවිධ නගරවල අපරාධ සහ කුමන්ත්‍රණ විසඳන ක්‍රියාදාම කතා මාලාවකි."
+  },
+  {
+    name: "True Blood", rating: "7.9",
+    genre: "Drama, Fantasy, Horror", seasons: 7, episodes: 80,
+    price: 300, old: true, colors: ["#66212d","#1d1017"],
+    trailer: "https://youtu.be/vxL8lQ1Qn2k",
+    desc: "වැම්පයර්වරුන් මිනිස් සමාජය සමඟ ජීවත් වීමට උත්සාහ කරන ලෝකයක සම්බන්ධතා සහ අභිරහස් දිගහැරෙයි."
+  },
+  {
+    name: "The Flash", rating: "7.5",
+    genre: "Action, Sci-Fi", seasons: 9, episodes: 184,
+    price: 500, old: true, colors: ["#8e2525","#260b0b"],
+    trailer: "https://youtu.be/Yj0l7iGKh8g",
+    desc: "අසාමාන්‍ය වේගයක් ලබාගත් බැරී ඇලන් තම බලය භාවිතයෙන් නගරය ආරක්ෂා කිරීමට උත්සාහ කරයි."
+  },
+  {
+    name: "IT: Welcome to Derry", rating: "7.5",
+    genre: "Horror, Mystery", seasons: 1, episodes: 8,
+    price: 100, old: true, colors: ["#6b2525","#170d12"],
+    trailer: "https://youtu.be/I7r5c7z4C9A",
+    desc: "ඩෙරී නගරයේ අඳුරු ඉතිහාසය සහ එහි පදිංචිකරුවන්ට මුහුණදීමට සිදුවන අද්භූත භීතිය ගවේෂණය කරයි."
+  },
+  {
+    name: "House of the Dragon", rating: "8.4",
+    genre: "Fantasy, Drama", seasons: 2, episodes: 18,
+    price: 250, old: true, colors: ["#55302b","#1d1011"],
+    trailer: "https://youtu.be/DotnJ7tTA34",
+    desc: "ටාර්ගේරියන් රාජවංශයේ අභ්‍යන්තර බල අරගල සහ මකරුන් සම්බන්ධ ඉතිහාසය පෙන්වන කතාවකි."
+  },
+  {
+    name: "One Piece", rating: "8.3",
+    genre: "Action, Adventure", seasons: 1, episodes: 8,
+    price: 200, old: true, colors: ["#397e9a","#122e42"],
+    trailer: "https://youtu.be/Ades3pQbeh8",
+    desc: "මුහුදු කොල්ලකරුවෙකු වීමට සිහින දකින ලෆී තම මිතුරන් සමඟ විශාල නිධානයක් සොයා මුහුදු ගමනක යෙදෙයි."
+  },
+  {
+    name: "Robinhood (2026)", rating: "N/A",
+    genre: "Action, Drama", seasons: null, episodes: null,
+    price: 100, old: true, colors: ["#426c45","#152619"],
+    trailer: "https://youtu.be/0QW0f0f3b0A",
+    desc: "Robin Hood චරිතය ආශ්‍රිත මෙම නිර්මාණයේ නවතම විකාශන සහ කථාංග තොරතුරු තහවුරු කර බලන්න."
+  },
+  {
+    name: "Lost", rating: "8.3",
+    genre: "Drama, Mystery, Sci-Fi", seasons: 6, episodes: 121,
+    price: 600, old: true, colors: ["#526b61","#18221f"],
+    trailer: "https://youtu.be/KTu8iDynwNc",
+    desc: "ගුවන් අනතුරකින් පසු හුදෙකලා දූපතක සිරවන පිරිසක් ජීවිතය රැකගන්නා අතර දූපතේ රහස් සොයා යයි."
+  },
+  {
+    name: "Outer Banks", rating: "7.5",
+    genre: "Adventure, Drama", seasons: 4, episodes: 40,
+    price: 450, old: true, colors: ["#3b787d","#142e34"],
+    trailer: "https://youtu.be/vqX7jO0l8mQ",
+    desc: "තරුණ මිතුරන් පිරිසක් අතුරුදන් වූ නිධානයක් සොයා යන අතර රහස්, අවදානම් සහ තරගකාරීත්වයට මුහුණ දෙයි."
+  },
+  {
+    name: "Kingdom", rating: "8.3",
+    genre: "Action, Historical, Horror", seasons: 2, episodes: 12,
+    price: 250, old: true, colors: ["#746044","#292015"],
+    trailer: "https://youtu.be/4l-yByZ3xZA",
+    desc: "පැරණි කොරියානු රාජධානියක අද්භූත වසංගතයක් පැතිරෙන විට කුමාරයෙකු රට බේරාගැනීමට උත්සාහ කරයි."
+  },
+  {
+    name: "From", rating: "7.8",
+    genre: "Horror, Mystery", seasons: 3, episodes: 30,
+    price: 300, old: true, colors: ["#655a3f","#1d1b15"],
+    trailer: "https://youtu.be/pDHqAjJ5sA0",
+    desc: "පිටවීමට නොහැකි අද්භූත නගරයක සිරවන මිනිසුන් දිවි ගලවා ගැනීමට සහ නගරයේ රහස් විසඳීමට උත්සාහ කරයි."
+  },
+  {
+    name: "Dark", rating: "8.7",
+    genre: "Sci-Fi, Mystery, Drama", seasons: 3, episodes: 26,
+    price: 300, old: true, colors: ["#39434e","#11161c"],
+    trailer: "https://youtu.be/ESEUoa-mz2c",
+    desc: "කුඩා ජර්මානු නගරයක අතුරුදන්වීම් කිහිපයක් පවුල් හතරක ජීවිත සහ කාලය පිළිබඳ අභිරහසකට සම්බන්ධ කරයි."
+  },
+  {
+    name: "Duty After School", rating: "6.8",
+    genre: "Action, Sci-Fi, Drama", seasons: 1, episodes: 10,
+    price: 150, old: true, colors: ["#575a79","#1a1b2a"],
+    trailer: "https://youtu.be/ZhRMm2WQJD0",
+    desc: "අද්භූත තර්ජනයකට මුහුණදීමට සිසුන්ට හමුදා පුහුණුව ලබාදෙන අතර ඔවුන්ගේ පාසල් ජීවිතය වෙනස් වෙයි."
+  },
+  {
+    name: "Cobra Kai", rating: "8.4",
+    genre: "Action, Comedy, Drama", seasons: 6, episodes: 65,
+    price: 350, old: true, colors: ["#a52d25","#310f10"],
+    trailer: "https://youtu.be/xCwwxNbtK6Y",
+    desc: "පරණ කරාටේ ප්‍රතිවාදීන් නැවත හමුවීමත් සමඟ තරුණ පරපුර අතර තරගකාරීත්වය සහ පැරණි ගැටුම් නැවත මතුවෙයි."
+  },
+  {
+    name: "The 100", rating: "7.6",
+    genre: "Sci-Fi, Drama", seasons: 7, episodes: 100,
+    price: 500, old: true, colors: ["#526a49","#1b251b"],
+    trailer: "https://youtu.be/aT2Zra2K7w4",
+    desc: "පෘථිවියට නැවත පැමිණෙන තරුණ පිරිසක් නව ලෝකයක ජීවිතය, නායකත්වය සහ පැවැත්ම සඳහා සටන් කරයි."
+  },
+  {
+    name: "Lucifer", rating: "8.0",
+    genre: "Crime, Fantasy, Drama", seasons: 6, episodes: 93,
+    price: 500, old: true, colors: ["#5b3338","#201116"],
+    trailer: "https://youtu.be/X4bF_quwNtw",
+    desc: "නිරයේ අධිපතියා ලොස් ඇන්ජලීස් වෙත පැමිණ රහස් පරීක්ෂකවරියකට අපරාධ විසඳීමට උදව් කරයි."
+  },
+  {
+    name: "All of Us Are Dead", rating: "7.5",
+    genre: "Horror, Action, Drama", seasons: 1, episodes: 12,
+    price: 150, old: true, colors: ["#4b5c54","#15221c"],
+    trailer: "https://youtu.be/IN5TD4VRcSM",
+    desc: "පාසලක වසංගතයක් පැතිරීමෙන් පසු සිසුන් පිරිසක් ජීවිතය බේරාගැනීමට සහ ආරක්ෂිත ස්ථානයකට ළඟාවීමට උත්සාහ කරයි."
+  },
+  {
+    name: "Squid Game", rating: "7.9",
+    genre: "Thriller, Drama", seasons: 3, episodes: 22,
+    price: 300, old: true, colors: ["#a63561","#301126"],
+    trailer: "https://youtu.be/oqxAJKy0ii4",
+    desc: "විශාල මුදල් ත්‍යාගයක් සඳහා තරග කරන පිරිසක් ළමා ක්‍රීඩා මත පදනම් වූ භයානක තරගාවලියකට ඇතුළු වෙති."
+  },
+
+  /* New series: prices follow the user's episode pricing system */
+
+  {
+    name: "Chernobyl", rating: "9.3",
+    genre: "Historical, Drama", seasons: 1, episodes: 5,
+    price: 150, old: false, colors: ["#56615c","#171d1c"],
+    trailer: "",
+    desc: "1986 චර්නොබිල් න්‍යෂ්ටික අනතුර සහ එහි ප්‍රතිවිපාක පාලනය කිරීමට උත්සාහ කළ පුද්ගලයන්ගේ සත්‍ය සිදුවීම් පාදක කතාවකි."
+  },
+  {
+    name: "Sherlock", rating: "9.0",
+    genre: "Crime, Mystery, Drama", seasons: 4, episodes: 13,
+    price: 150, old: false, colors: ["#354a62","#111a27"],
+    trailer: "",
+    desc: "නවීන ලන්ඩනයේ දක්ෂ රහස් පරීක්ෂක ෂර්ලොක් හෝම්ස් සහ වෛද්‍ය වොට්සන් සංකීර්ණ අපරාධ විසඳති."
+  },
+  {
+    name: "Better Call Saul", rating: "9.0",
+    genre: "Crime, Drama", seasons: 6, episodes: 63,
+    price: 450, old: false, colors: ["#a16b2b","#2b1b12"],
+    trailer: "",
+    desc: "අනාගතයේ සෝල් ගුඩ්මන් ලෙස ප්‍රසිද්ධ වන නීතිඥයෙකුගේ ජීවිතය සහ ඔහු ගන්නා සදාචාරාත්මක තීරණ පෙන්වයි."
+  },
+  {
+    name: "The Boys", rating: "8.5",
+    genre: "Action, Drama, Sci-Fi", seasons: 5, episodes: 40,
+    price: 300, old: false, colors: ["#8e2626","#240c0c"],
+    trailer: "",
+    desc: "බලවත් සුපිරි වීරයන්ගේ සැඟවුණු අඳුරු පැත්ත හෙළි කිරීමට සාමාන්‍ය මිනිසුන් පිරිසක් උත්සාහ කරති."
+  },
+  {
+    name: "Band of Brothers", rating: "9.4",
+    genre: "War, Historical, Drama", seasons: 1, episodes: 10,
+    price: 150, old: false, colors: ["#52614c","#1a2118"],
+    trailer: "",
+    desc: "දෙවන ලෝක යුද්ධයේදී Easy Company සෙබළුන් මුහුණදුන් අත්දැකීම් සහ සහෝදරත්වය නිරූපණය කරන කතා මාලාවකි."
+  },
+  {
+    name: "The Last of Us", rating: "8.7",
+    genre: "Drama, Sci-Fi, Adventure", seasons: 2, episodes: 16,
+    price: 200, old: false, colors: ["#435d42","#162116"],
+    trailer: "",
+    desc: "වසංගතයකින් විනාශ වූ ලෝකයක ජීවිතය රැකගැනීමට උත්සාහ කරන ජෝයෙල් සහ එලීගේ සංවේදී ගමනයි."
+  },
+  {
+    name: "Dexter", rating: "8.6",
+    genre: "Crime, Drama, Mystery", seasons: 8, episodes: 96,
+    price: 550, old: false, colors: ["#8c3333","#260c0c"],
+    trailer: "",
+    desc: "අධිකරණ විද්‍යා විශේෂඥයෙකු ලෙස සේවය කරන ඩෙක්ස්ටර් තම අඳුරු රහස සඟවාගෙන ජීවත් වීමට උත්සාහ කරයි."
+  },
+  {
+    name: "Narcos", rating: "8.7",
+    genre: "Crime, Drama, Biography", seasons: 3, episodes: 30,
+    price: 300, old: false, colors: ["#4d684c","#152116"],
+    trailer: "",
+    desc: "කොලොම්බියාවේ මත්ද්‍රව්‍ය ජාවාරම් සහ එය මැඩපැවැත්වීමට ක්‍රියා කළ නීති ක්‍රියාත්මක කරන නිලධාරීන්ගේ කතාවකි."
+  }
 ];
 
 const grid = document.getElementById("seriesGrid");
 const search = document.getElementById("search");
-const sort = document.getElementById("sort");
+const genreFilter = document.getElementById("genreFilter");
 const empty = document.getElementById("empty");
+const resultCount = document.getElementById("resultCount");
 
-function renderSeries() {
-  const query = search.value.trim().toLowerCase();
-  let list = series.filter(item => item.name.toLowerCase().includes(query));
-
-  if (sort.value === "low") list.sort((a,b) => a.price-b.price);
-  if (sort.value === "high") list.sort((a,b) => b.price-a.price);
-  if (sort.value === "az") list.sort((a,b) => a.name.localeCompare(b.name));
-
-  grid.innerHTML = list.map(item => {
-    const message = `Hello LK TV SERIES HUB! I would like to enquire about ${item.name}. Listed price: Rs. ${item.price}. Please confirm availability and details.`;
-    const whatsapp = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-
-    return `
-      <article class="card">
-        <div class="poster">${escapeHTML(item.name)}</div>
-        <div class="info">
-          <h2>${escapeHTML(item.name)}</h2>
-          <div class="price">Rs. ${item.price}/=</div>
-          <a class="order" href="${whatsapp}" target="_blank" rel="noopener">
-            Order via WhatsApp
-          </a>
-        </div>
-      </article>`;
-  }).join("");
-
-  empty.hidden = list.length !== 0;
-}
-
-function escapeHTML(text) {
-  return text.replace(/[&<>"']/g, char => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;",
-    '"':"&quot;", "'":"&#39;"
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
   }[char]));
 }
 
-search.addEventListener("input", renderSeries);
-sort.addEventListener("change", renderSeries);
-document.getElementById("year").textContent = new Date().getFullYear();
-renderSeries();
+function waLink(show) {
+  const message = `Hi LK TV SERIES HUB! I would like to ask about "${show.name}". Please confirm availability and price for authorized content.`;
+  return "https://wa.me/94714540217?text=" + encodeURIComponent(message);
+}
+
+function makeCard(show, index) {
+  const trailerButton = show.trailer
+    ? `<a class="glass-btn" href="${escapeHTML(show.trailer)}" target="_blank" rel="noopener noreferrer">▶ Watch Trailer</a>`
+    : `<button class="glass-btn no-trailer" type="button" disabled>Trailer not added</button>`;
+
+  const rating = show.rating === "N/A"
+    ? "⭐ Rating unavailable"
+    : `⭐ ${escapeHTML(show.rating)} / 10`;
+
+  const seasonText = show.seasons == null ? "Seasons: Confirm" : `Seasons: ${show.seasons}`;
+  const episodeText = show.episodes == null ? "Episodes: Confirm" : `Episodes: ${show.episodes}`;
+
+  return `
+    <article class="card" style="animation-delay:${Math.min(index * 20, 300)}ms">
+      <div class="cover" style="--c1:${show.colors[0]};--c2:${show.colors[1]}">
+        <span class="cover-label">${show.old ? "COLLECTION" : "NEW ADDITION"}</span>
+        <div class="cover-title">${escapeHTML(show.name)}</div>
+      </div>
+
+      <div class="card-body">
+        <h3 class="card-title">${escapeHTML(show.name)}</h3>
+        <div class="rating">${rating}</div>
+        <div class="genre">${escapeHTML(show.genre)}</div>
+
+        <div class="meta">
+          <span class="pill">📺 ${seasonText}</span>
+          <span class="pill">🎞️ ${episodeText}</span>
+        </div>
+
+        <p class="description">${escapeHTML(show.desc)}</p>
+
+        <div class="price">Rs. ${show.price}</div>
+
+        <div class="card-actions">
+          ${trailerButton}
+          <a class="glass-btn primary-btn"
+             href="${waLink(show)}"
+             target="_blank"
+             rel="noopener noreferrer">💬 WhatsApp Inquiry</a>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function render() {
+  const query = search.value.trim().toLowerCase();
+  const genre = genreFilter.value;
+
+  const filtered = series.filter(show => {
+    const matchesSearch =
+      show.name.toLowerCase().includes(query) ||
+      show.genre.toLowerCase().includes(query) ||
+      show.desc.toLowerCase().includes(query);
+
+    const matchesGenre =
+      genre === "all" ||
+      show.genre.toLowerCase().includes(genre.toLowerCase());
+
+    return matchesSearch && matchesGenre;
+  });
+
+  grid.innerHTML = filtered.map(makeCard).join("");
+  empty.style.display = filtered.length ? "none" : "block";
+  resultCount.textContent = `${filtered.length} Series`;
+}
+
+search.addEventListener("input", render);
+genreFilter.addEventListener("change", render);
+
+render();
 </script>
 
 </body>
-    </html>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK TV SERIES HUB</title>
+<style>
+:root {
+  --red: #ff2638;
+  --bg: #090909;
+  --card: #171717;
+  --muted: #b8b8b8;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: white;
+}
+header {
+  text-align: center;
+  padding: 34px 16px;
+  background: linear-gradient(135deg, #240006, #090909 65%);
+  border-bottom: 2px solid var(--red);
+}
+.logo {
+  font-size: clamp(27px, 6vw, 44px);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.logo span { color: var(--red); }
+header p { color: #ddd; margin-bottom: 0; }
+.notice {
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 12px 16px;
+  color: #ffd8dc;
+  background: #21090c;
+  border: 1px solid #61202a;
+  border-radius: 10px;
+  text-align: center;
+}
+.controls {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+input, select {
+  padding: 13px;
+  border-radius: 8px;
+  border: 1px solid #383838;
+  background: #171717;
+  color: white;
+  font-size: 15px;
+}
+input { flex: 1; min-width: 190px; }
+select { min-width: 145px; }
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 16px 30px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid #303030;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .2s, border-color .2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--red);
+}
+.poster {
+  min-height: 105px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 18px 12px;
+  background: linear-gradient(135deg, #360008, #171717 75%);
+  border-bottom: 1px solid #333;
+  font-weight: 900;
+  font-size: 23px;
+  overflow-wrap: anywhere;
+}
+.info { padding: 15px; }
+.info h2 { font-size: 18px; margin: 0 0 8px; }
+.price {
+  color: var(--red);
+  font-size: 22px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+.order {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--red);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.order:hover { background: #d81729; }
+.section-title {
+  margin: 28px 0 16px;
+  font-size: 24px;
+}
+.payment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+.payment span {
+  padding: 11px 16px;
+  border-radius: 8px;
+  border: 1px solid #393939;
+  background: #171717;
+}
+footer {
+  text-align: center;
+  padding: 25px 16px;
+  border-top: 1px solid #333;
+  color: var(--muted);
+  line-height: 1.8;
+}
+footer a { color: #ff5260; }
+.empty { text-align: center; color: #bbb; padding: 25px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">LK <span>TV SERIES HUB</span></div>
+  <p>Your Series Collection • Sinhala Subtitles</p>
+</header>
+
+<div class="notice">
+  🎬 Browse the collection below and contact us on WhatsApp to enquire.
+</div>
+
+<div class="controls">
+  <input id="search" type="search" placeholder="🔎 Search TV series...">
+  <select id="sort">
+    <option value="default">Default order</option>
+    <option value="low">Price: Low to High</option>
+    <option value="high">Price: High to Low</option>
+    <option value="az">Name: A–Z</option>
+  </select>
+</div>
+
+<main>
+  <h2 class="section-title">🔥 TV SERIES COLLECTION</h2>
+  <div id="seriesGrid" class="grid"></div>
+  <p id="empty" class="empty" hidden>No series found. Try another search.</p>
+
+  <h2 class="section-title">💳 Payment Methods</h2>
+  <div class="payment">
+    <span>🏦 Bank Transfer</span>
+    <span>📱 eZ Cash</span>
+    <span>📲 Reload</span>
+  </div>
+  <p style="text-align:center;color:#bbb">
+    Contact us on WhatsApp to confirm availability and payment details.
+  </p>
+</main>
+
+<footer>
+  <strong style="color:white">LK TV SERIES HUB</strong><br>
+  WhatsApp: <a href="https://wa.me/94714540217" target="_blank" rel="noopener">+94 71 454 0217</a><br>
+  <span>© <span id="year"></span> LK TV SERIES HUB</span>
+</footer>
+
+<script>
+const WHATSAPP_NUMBER = "94714540217";
+
+const series = [
+  {name:"Breaking Bad", price:400},
+  {name:"Sex Education", price:300},
+  {name:"Vikings: Valhalla", price:200},
+  {name:"Game of Thrones", price:500},
+  {name:"Prison Break", price:450},
+  {name:"Peaky Blinders", price:350},
+  {name:"The Walking Dead", price:600},
+  {name:"Money Heist", price:450},
+  {name:"Teen Wolf", price:400},
+  {name:"The Last Ship", price:300},
+  {name:"Stranger Things", price:400},
+  {name:"Reacher", price:300},
+  {name:"True Blood", price:450},
+  {name:"The Flash", price:500},
+  {name:"IT: Welcome to Derry", price:100},
+  {name:"House of the Dragon", price:250},
+  {name:"One Piece", price:200},
+  {name:"Robinhood (2026)", price:100},
+  {name:"Lost", price:600},
+  {name:"Outer Banks", price:450},
+  {name:"Kingdom", price:250},
+  {name:"From", price:300},
+  {name:"Dark", price:300},
+  {name:"Duty After School", price:150},
+  {name:"Cobra Kai", price:350},
+  {name:"The 100", price:500},
+  {name:"Lucifer", price:500},
+  {name:"All of Us Are Dead", price:150},
+  {name:"Squid Game", price:300}
+];
+
+const grid = document.getElementById("seriesGrid");
+const search = document.getElementById("search");
+const sort = document.getElementById("sort");
+const empty = document.getElementById("empty");
+
+function renderSeries() {
+  const query = search.value.trim().toLowerCase();
+  let list = series.filter(item => item.name.toLowerCase().includes(query));
+
+  if (sort.value === "low") list.sort((a,b) => a.price-b.price);
+  if (sort.value === "high") list.sort((a,b) => b.price-a.price);
+  if (sort.value === "az") list.sort((a,b) => a.name.localeCompare(b.name));
+
+  grid.innerHTML = list.map(item => {
+    const message = `Hello LK TV SERIES HUB! I would like to enquire about ${item.name}. Listed price: Rs. ${item.price}. Please confirm availability and details.`;
+    const whatsapp = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+    return `
+      <article class="card">
+        <div class="poster">${escapeHTML(item.name)}</div>
+        <div class="info">
+          <h2>${escapeHTML(item.name)}</h2>
+          <div class="price">Rs. ${item.price}/=</div>
+          <a class="order" href="${whatsapp}" target="_blank" rel="noopener">
+            Order via WhatsApp
+          </a>
+        </div>
+      </article>`;
+  }).join("");
+
+  empty.hidden = list.length !== 0;
+}
+
+function escapeHTML(text) {
+  return text.replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  }[char]));
+}
+
+search.addEventListener("input", renderSeries);
+sort.addEventListener("change", renderSeries);
+document.getElementById("year").textContent = new Date().getFullYear();
+renderSeries();
+</script>
+
+</body>
+    </html>

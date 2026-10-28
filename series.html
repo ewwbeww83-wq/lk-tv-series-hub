@@ -29,53 +29,7 @@ footer{text-align:center;color:#888;margin-top:30px;padding:20px;border-top:1px 
 @media(max-width:500px){.card{padding:16px}.description{font-size:15px}h2{font-size:23px}}
 </style>
 </head>
-<!-- Background Music -->
-<audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
 
-<button id="musicBtn" onclick="toggleMusic()" style="
-    position:fixed;
-    bottom:20px;
-    right:15px;
-    z-index:9999;
-    background:#ff0033;
-    color:white;
-    border:1px solid #ff3355;
-    padding:12px 18px;
-    border-radius:30px;
-    font-weight:bold;
-    box-shadow:0 0 15px #ff0033;
-">
-🎵 Play Music
-</button>
-
-<script>
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-
-music.volume = 0.25;
-
-function toggleMusic() {
-    if (music.paused) {
-        music.play().then(() => {
-            musicBtn.textContent = "🔊 Music ON";
-        }).catch(() => {
-            musicBtn.textContent = "▶️ Tap to Play";
-        });
-    } else {
-        music.pause();
-        musicBtn.textContent = "🎵 Play Music";
-    }
-}
-
-// Attempt autoplay
-music.play().then(() => {
-    musicBtn.textContent = "🔊 Music ON";
-}).catch(() => {
-    musicBtn.textContent = "🎵 Play Music";
-});
-</script>
 <body>
 
 <header>

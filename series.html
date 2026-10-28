@@ -3,121 +3,312 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LK TV SERIES HUB</title>
+
+<title>LK TV SERIES HUB | Sinhala Subtitles</title>
+
+<meta name="description" content="LK TV SERIES HUB - TV Series Collection with Sinhala Subtitles">
 
 <style>
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:#080000;
-  color:#fff;
-  font-family:Arial,sans-serif;
-  line-height:1.8;
+* {
+  box-sizing: border-box;
 }
 
-header{
-  text-align:center;
-  padding:25px 12px;
-  background:linear-gradient(135deg,#080000,#300000,#100000);
-  border-bottom:2px solid #ff1010;
-  box-shadow:0 0 22px #ff000044;
+html {
+  scroll-behavior: smooth;
 }
 
-header h1{
-  color:#ff1515;
-  font-size:clamp(25px,5vw,40px);
-  text-shadow:0 0 10px #ff0000,0 0 22px #ff0000;
-  margin:0;
+body {
+  margin: 0;
+  background: #080000;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
 }
 
-header p{color:#ddd}
-
-.container{
-  width:92%;
-  max-width:760px;
-  margin:30px auto;
+header {
+  text-align: center;
+  padding: 30px 15px;
+  background: linear-gradient(135deg, #080000, #350000, #100000);
+  border-bottom: 2px solid #ff1717;
+  box-shadow: 0 0 25px #ff000044;
 }
 
-.card{
-  background:#160909;
-  padding:24px;
-  border:1px solid #ff2020;
-  border-radius:16px;
-  box-shadow:0 0 22px #ff000022;
+.logo {
+  margin: 0;
+  font-size: clamp(27px, 6vw, 44px);
+  color: #ff2020;
+  text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000;
+  font-weight: 900;
 }
 
-.series-title{
-  text-align:center;
-  color:#ff2929;
-  font-size:30px;
-  text-shadow:0 0 10px #ff000066;
+.tagline {
+  color: #eeeeee;
+  margin: 10px 0;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
-.description{color:#eee;font-size:16px}
-
-.price{
-  color:#ff4040;
-  text-align:center;
-  font-size:28px;
-  font-weight:bold;
-  margin:20px 0;
+.header-label {
+  display: inline-block;
+  padding: 6px 15px;
+  margin-top: 8px;
+  color: #ffffff;
+  background: #8e0000;
+  border: 1px solid #ff3030;
+  border-radius: 30px;
+  font-size: 12px;
 }
 
-.button{
-  display:block;
-  width:100%;
-  text-align:center;
-  padding:13px;
-  margin-top:15px;
-  border-radius:9px;
-  font-weight:bold;
-  text-decoration:none;
-  color:#fff;
-  background:linear-gradient(90deg,#a80000,#ff1515);
-  border:1px solid #ff4040;
-  box-shadow:0 0 12px #ff000033;
+.hero {
+  text-align: center;
+  padding: 30px 15px 20px;
 }
 
-.proof{background:linear-gradient(90deg,#8a0000,#ff3030)}
-.back{background:#260909;border:1px solid #ff3030}
-
-.payment-box{
-  margin-top:25px;
-  padding:18px;
-  background:#100505;
-  border:1px solid #ff2525;
-  border-radius:12px;
+.hero h2 {
+  color: #ff3030;
+  font-size: 25px;
+  text-shadow: 0 0 12px #ff000055;
 }
 
-.payment-box h3{
-  text-align:center;
-  color:#ff3030;
+.hero p {
+  color: #cccccc;
+  line-height: 1.8;
 }
 
-.payment-option{
-  padding:12px;
-  margin-top:12px;
-  background:#200909;
-  border-left:4px solid #ff2020;
-  border-radius:7px;
+.search-area {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 15px;
 }
 
-.payment-option h4{color:#ff5050;margin:0}
-.payment-option p{color:#ddd}
-
-.note{text-align:center;color:#aaa;font-size:13px}
-
-footer{
-  text-align:center;
-  padding:20px;
-  color:#999;
-  border-top:1px solid #ff2020;
+#search {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ff2525;
+  border-radius: 10px;
+  background: #160909;
+  color: #ffffff;
+  outline: none;
+  font-size: 16px;
+  box-shadow: 0 0 12px #ff000022;
 }
 
-@media(max-width:480px){
-  .card{padding:17px}
-  .series-title{font-size:25px}
+#search:focus {
+  box-shadow: 0 0 18px #ff000066;
+}
+
+#search::placeholder {
+  color: #aaaaaa;
+}
+
+.filter-area {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.filter-btn {
+  padding: 9px 15px;
+  border: 1px solid #ff3030;
+  background: #190707;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #d90000;
+  box-shadow: 0 0 12px #ff000055;
+}
+
+.section-title {
+  text-align: center;
+  color: #ff3030;
+  margin: 30px 0 20px;
+  font-size: 25px;
+}
+
+#seriesCount {
+  text-align: center;
+  color: #bbbbbb;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 94%;
+  max-width: 1100px;
+  margin: 0 auto 35px;
+}
+
+.series-card {
+  background: linear-gradient(145deg, #200909, #0d0505);
+  border: 1px solid #8e1515;
+  border-radius: 12px;
+  padding: 15px 12px;
+  text-align: center;
+  box-shadow: 0 0 12px #ff000015;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 0;
+}
+
+.series-card:hover {
+  transform: translateY(-3px);
+  border-color: #ff3030;
+  box-shadow: 0 0 18px #ff000044;
+}
+
+.series-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.series-card h3 {
+  color: #ff4141;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 5px 0 10px;
+  overflow-wrap: anywhere;
+}
+
+.subtitle-label {
+  display: inline-block;
+  color: #ffbaba;
+  border: 1px solid #6f2020;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-size: 10px;
+  margin-bottom: 8px;
+}
+
+.series-price {
+  font-size: 21px;
+  color: #ffffff;
+  font-weight: bold;
+  margin: 8px 0 12px;
+}
+
+.series-price span {
+  color: #ff3030;
+}
+
+.card-btn {
+  display: block;
+  text-decoration: none;
+  padding: 10px 5px;
+  margin-top: 8px;
+  border-radius: 7px;
+  color: #ffffff;
+  background: linear-gradient(90deg, #970000, #f01818);
+  border: 1px solid #ff4141;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.card-btn:hover {
+  background: #ff2929;
+  box-shadow: 0 0 12px #ff000055;
+}
+
+.no-results {
+  display: none;
+  text-align: center;
+  color: #ff5555;
+  padding: 30px 10px;
+}
+
+.payment-section {
+  width: 92%;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #150606;
+  border: 1px solid #ff2525;
+  border-radius: 14px;
+  box-shadow: 0 0 18px #ff000022;
+}
+
+.payment-section h2 {
+  color: #ff3030;
+  text-align: center;
+}
+
+.payment-option {
+  background: #220909;
+  border-left: 4px solid #ff2020;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 6px;
+}
+
+.payment-option h3 {
+  color: #ff5555;
+  margin: 0;
+  font-size: 17px;
+}
+
+.payment-option p {
+  color: #dddddd;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.main-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(90deg, #940000, #ff1616);
+  padding: 13px;
+  border: 1px solid #ff4545;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.proof-btn {
+  background: #210909;
+  border: 1px solid #ff3030;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px;
+  border-top: 1px solid #ff2525;
+  background: #0d0303;
+  color: #aaaaaa;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+footer strong {
+  color: #ff3030;
+}
+
+@media (min-width: 650px) {
+  .series-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .series-card {
+    padding: 20px 15px;
+  }
+
+  .series-card h3 {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 950px) {
+  .series-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 </style>
 </head>
@@ -125,326 +316,192 @@ footer{
 <body>
 
 <header>
-  <h1>LK TV SERIES HUB</h1>
-  <p>🔥 PREMIUM TV SERIES COLLECTION 🔥</p>
-  <p>SINHALA SUBTITLES</p>
+  <h1 class="logo">LK TV SERIES HUB</h1>
+  <p class="tagline">PREMIUM SERIES COLLECTION</p>
+  <div class="header-label">🇱🇰 SINHALA SUBTITLES</div>
 </header>
 
-<main class="container">
-<section class="card">
+<section class="hero">
+  <h2>🔥 PREMIUM TV SERIES 🔥</h2>
+  <p>
+    ඔයා කැමතිම TV Series එක තෝරගන්න.<br>
+    විස්තර, මිල ගණන් සහ මිලදී ගැනීමේ තොරතුරු මෙතැනින් බලන්න.
+  </p>
+</section>
 
-<h2 class="series-title" id="title">TV Series</h2>
-<p class="description" id="description"></p>
-<p class="price" id="price"></p>
-<div class="payment-box">
-  <h3>💳 PAYMENT METHODS</h3>
+<div class="search-area">
+  <input
+    type="search"
+    id="search"
+    placeholder="🔍 Series නම Search කරන්න..."
+    aria-label="Search TV series"
+  >
 
-  <div class="payment-option">
-    <h4>🏦 BANK TRANSFER</h4>
-    <p>Bank Transfer මගින් ගෙවීමට හැකියි. ගෙවීම් විස්තර WhatsApp හරහා ලබාගන්න.</p>
+  <div class="filter-area">
+    <button class="filter-btn active" data-filter="all">ALL SERIES</button>
+    <button class="filter-btn" data-filter="action">ACTION</button>
+    <button class="filter-btn" data-filter="crime">CRIME</button>
+    <button class="filter-btn" data-filter="fantasy">FANTASY</button>
+    <button class="filter-btn" data-filter="drama">DRAMA</button>
   </div>
-
-  <div class="payment-option">
-    <h4>📱 MOBILE RELOAD</h4>
-    <p>Reload මගින් ගෙවීමට අවශ්‍ය නම් WhatsApp හරහා විමසන්න.</p>
-  </div>
-
-  <a class="button" id="paymentButton"
-     href="https://wa.me/94714540217"
-     target="_blank" rel="noopener noreferrer">
-    📲 PAYMENT DETAILS ලබාගන්න
-  </a>
 </div>
 
-<a class="button" id="buy" href="#"
-   target="_blank" rel="noopener noreferrer">
-  🔴 SERIES එක මිලදී ගන්න
-</a>
+<h2 class="section-title">🎬 OUR SERIES COLLECTION</h2>
+<p id="seriesCount"></p>
 
-<a class="button proof"
-   href="https://whatsapp.com/channel/0029VbD0cA9D38CMYzGk2q3X/122"
-   target="_blank" rel="noopener noreferrer">
-  ✅ PAYMENT PROOFS
-</a>
+<main class="series-grid" id="seriesGrid"></main>
 
-<a class="button back" href="index.html">
-  ⬅ HOME PAGE
-</a>
+<p class="no-results" id="noResults">
+  මේ නමින් Series එකක් හමු වුණේ නැහැ.
+</p>
 
-<p class="note">LK TV SERIES HUB | PREMIUM COLLECTION</p>
+<section class="payment-section">
+  <h2>💳 PAYMENT METHODS</h2>
 
+  <div class="payment-option">
+    <h3>🏦 BANK TRANSFER</h3>
+    <p>
+      Bank Transfer මගින් ගෙවීමට අවශ්‍ය නම්
+      WhatsApp හරහා ගෙවීම් විස්තර ලබාගන්න.
+    </p>
+  </div>
+
+  <div class="payment-option">
+    <h3>📱 MOBILE RELOAD</h3>
+    <p>
+      Mobile Reload මගින් ගෙවීමට අවශ්‍ය නම්
+      WhatsApp හරහා විමසන්න.
+    </p>
+  </div>
+
+  <a
+    class="main-btn"
+    href="https://wa.me/94714540217?text=Hello%20LK%20TV%20SERIES%20HUB%2C%20please%20send%20payment%20details."
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    📲 PAYMENT DETAILS ලබාගන්න
+  </a>
+
+  <a
+    class="main-btn proof-btn"
+    href="https://whatsapp.com/channel/0029VbD0cA9D38CMYzGk2q3X/122"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    ✅ PAYMENT PROOFS
+  </a>
 </section>
-</main>
 
 <footer>
-  <p>© LK TV SERIES HUB</p>
+  <p><strong>LK TV SERIES HUB</strong></p>
+  <p>PREMIUM TV SERIES COLLECTION</p>
+  <p>© 2026 LK TV SERIES HUB</p>
 </footer>
 
 <script>
-const series = {
+const series = [
+  {name:"Breaking Bad",file:"breaking-bad",price:400,icon:"🧪",category:"crime"},
+  {name:"Sex Education",file:"sex-education",price:300,icon:"🎓",category:"drama"},
+  {name:"Vikings: Valhalla",file:"vikings-valhalla",price:200,icon:"⚔️",category:"action"},
+  {name:"Game of Thrones",file:"game-of-thrones",price:500,icon:"🐉",category:"fantasy"},
+  {name:"Prison Break",file:"prison-break",price:450,icon:"🔐",category:"crime"},
+  {name:"Peaky Blinders",file:"peaky-blinders",price:350,icon:"🎩",category:"crime"},
+  {name:"The Walking Dead",file:"the-walking-dead",price:600,icon:"🧟",category:"action"},
+  {name:"Money Heist",file:"money-heist",price:450,icon:"💰",category:"crime"},
+  {name:"Teen Wolf",file:"teen-wolf",price:400,icon:"🐺",category:"fantasy"},
+  {name:"Stranger Things",file:"stranger-things",price:400,icon:"👾",category:"fantasy"},
+  {name:"Reacher",file:"reacher",price:300,icon:"🥊",category:"action"},
+  {name:"True Blood",file:"true-blood",price:450,icon:"🧛",category:"fantasy"},
+  {name:"The Flash",file:"the-flash",price:500,icon:"⚡",category:"action"},
+  {name:"IT: Welcome to Derry",file:"it-welcome-to-derry",price:100,icon:"🎈",category:"fantasy"},
+  {name:"House of the Dragon",file:"house-of-the-dragon",price:250,icon:"🐲",category:"fantasy"},
+  {name:"One Piece",file:"one-piece",price:200,icon:"🏴‍☠️",category:"action"},
+  {name:"Robinhood (2026)",file:"robinhood-2026",price:100,icon:"🏹",category:"action"},
+  {name:"Lost",file:"lost",price:600,icon:"🏝️",category:"drama"},
+  {name:"Outer Banks",file:"outer-banks",price:450,icon:"🌊",category:"drama"},
+  {name:"Kingdom",file:"kingdom",price:250,icon:"👑",category:"action"},
+  {name:"From",file:"from",price:300,icon:"🌑",category:"fantasy"},
+  {name:"Dark",file:"dark",price:300,icon:"⌛",category:"fantasy"},
+  {name:"Duty After School",file:"duty-after-school",price:150,icon:"🎖️",category:"action"},
+  {name:"Cobra Kai",file:"cobra-kai",price:350,icon:"🥋",category:"action"},
+  {name:"The 100",file:"the-100",price:500,icon:"🚀",category:"fantasy"},
+  {name:"Lucifer",file:"lucifer",price:500,icon:"😈",category:"fantasy"},
+  {name:"All of Us Are Dead",file:"all-of-us-are-dead",price:150,icon:"🧟",category:"action"},
+  {name:"Squid Game",file:"squid-game",price:300,icon:"🎮",category:"drama"},
+  {name:"Chernobyl",file:"chernobyl",price:150,icon:"☢️",category:"drama"},
+  {name:"Sherlock",file:"sherlock",price:150,icon:"🔎",category:"crime"},
+  {name:"Better Call Saul",file:"better-call-saul",price:450,icon:"⚖️",category:"crime"},
+  {name:"The Boys",file:"the-boys",price:300,icon:"💥",category:"action"},
+  {name:"Band of Brothers",file:"band-of-brothers",price:150,icon:"🪖",category:"action"},
+  {name:"The Last of Us",file:"the-last-of-us",price:200,icon:"🍄",category:"drama"},
+  {name:"Dexter",file:"dexter",price:550,icon:"🕵️",category:"crime"},
+  {name:"Narcos",file:"narcos",price:300,icon:"🚔",category:"crime"}
+];
 
-"breaking-bad": {
-name:"Breaking Bad",
-price:400,
-description:"රසායන විද්‍යා ගුරුවරයෙකුගේ ජීවිතය අපරාධ ලෝකයට හැරෙන ආකාරය පෙන්වන ජනප්‍රිය කතා මාලාවකි. පවුල, බලය සහ තීරණවල ප්‍රතිවිපාක මෙහි ප්‍රධාන වේ."
-},
+const grid = document.getElementById("seriesGrid");
+const search = document.getElementById("search");
+const count = document.getElementById("seriesCount");
+const noResults = document.getElementById("noResults");
 
-"sex-education": {
-name:"Sex Education",
-price:300,
-description:"පාසල් ජීවිතය, මිත්‍රත්වය, පවුල් සබඳතා සහ නව යොවුන් වියේ ගැටලු ගැන කතා කරන හාස්‍යමය නාට්‍ය මාලාවකි."
-},
+let activeFilter = "all";
 
-"vikings-valhalla": {
-name:"Vikings: Valhalla",
-price:200,
-description:"වයිකිං රණශූරයන්ගේ වීර චාරිකා, සටන්, දේශපාලන බල අරගල සහ නව ලෝක සොයා යාම ගැන කියවෙන ඓතිහාසික කතා මාලාවකි."
-},
+function renderSeries() {
+  const query = search.value.trim().toLowerCase();
 
-"game-of-thrones": {
-name:"Game of Thrones",
-price:500,
-description:"රාජධානි අතර බල අරගල, යුද්ධ, දේශපාලන කුමන්ත්‍රණ සහ අද්භූත තර්ජන වටා ගොඩනැගුණු ජනප්‍රිය ෆැන්ටසි කතා මාලාවකි."
-},
+  const filtered = series.filter(item => {
+    const matchesName = item.name.toLowerCase().includes(query);
+    const matchesCategory =
+      activeFilter === "all" || item.category === activeFilter;
 
-"prison-break": {
-name:"Prison Break",
-price:450,
-description:"තම සහෝදරයා බේරා ගැනීමට බන්ධනාගාරයෙන් පලායාමේ සැලැස්මක් සකස් කරන බුද්ධිමත් පුද්ගලයෙකු පිළිබඳ ක්‍රියාදාම කතා මාලාවකි."
-},
+    return matchesName && matchesCategory;
+  });
 
-"peaky-blinders": {
-name:"Peaky Blinders",
-price:350,
-description:"පළමු ලෝක යුද්ධයෙන් පසු බර්මින්හැම් නගරයේ බලය ව්‍යාප්ත කරන අපරාධ පවුලක් පිළිබඳ නාට්‍ය මාලාවකි."
-},
+  grid.innerHTML = filtered.map(item => `
+    <article class="series-card">
+      <div class="series-icon">${item.icon}</div>
+      <h3>${item.name}</h3>
+      <div class="subtitle-label">🇱🇰 SINHALA SUBTITLES</div>
+      <p class="series-price"><span>Rs.</span> ${item.price}/=</p>
 
-"the-walking-dead": {
-name:"The Walking Dead",
-price:600,
-description:"සොම්බි වසංගතයකින් විනාශ වූ ලෝකයක දිවි ගලවා ගැනීමට උත්සාහ කරන පිරිසක් පිළිබඳ කතා මාලාවකි."
-},
+      <a class="card-btn"
+         href="series.html?show=${encodeURIComponent(item.file)}">
+         📖 VIEW DETAILS
+      </a>
 
-"money-heist": {
-name:"Money Heist",
-price:450,
-description:"විශාල මංකොල්ලයක් සැලසුම් කරන කණ්ඩායමක්, ඔවුන්ගේ නායකයා සහ පොලිසිය අතර සිදුවන බුද්ධිමය සටන පිළිබඳ ත්‍රාසජනක කතා මාලාවකි."
-},
+      <a class="card-btn"
+         href="https://wa.me/94714540217?text=${encodeURIComponent(
+           "Hello LK TV SERIES HUB! I want to buy " +
+           item.name + ". Price: Rs. " + item.price
+         )}"
+         target="_blank"
+         rel="noopener noreferrer">
+         📲 BUY NOW
+      </a>
+    </article>
+  `).join("");
 
-"teen-wolf": {
-name:"Teen Wolf",
-price:400,
-description:"අද්භූත බලයක් ලැබීමෙන් පසු තම ජීවිතය වෙනස් වන පාසල් සිසුවෙකු සහ ඔහුගේ මිතුරන් පිළිබඳ ෆැන්ටසි කතා මාලාවකි."
-},
+  count.textContent =
+    "Series ගණන: " + filtered.length + " / " + series.length;
 
-"stranger-things": {
-name:"Stranger Things",
-price:400,
-description:"කුඩා නගරයක අභිරහස් අතුරුදහන්වීම් සහ වෙනත් මානයකට සම්බන්ධ අසාමාන්‍ය සිදුවීම් සොයා යන මිතුරන් පිරිසක් පිළිබඳ කතා මාලාවකි."
-},
-
-"reacher": {
-name:"Reacher",
-price:300,
-description:"හිටපු හමුදා විමර්ශකයෙකු අපරාධ සහ අභිරහස් විසඳීමට උත්සාහ කරන ක්‍රියාදාම කතා මාලාවකි."
-},
-
-"true-blood": {
-name:"True Blood",
-price:450,
-description:"වැම්පයර්වරුන් සහ මිනිසුන් එකම ලෝකයක ජීවත් වන පසුබිමක ඇතිවන අභිරහස් සහ ගැටුම් පිළිබඳ කතා මාලාවකි."
-},
-
-"the-flash": {
-name:"The Flash",
-price:500,
-description:"අසාමාන්‍ය වේගයකින් ගමන් කළ හැකි සුපිරි වීරයෙකු තම නගරය ආරක්ෂා කරමින් විවිධ සතුරන්ට මුහුණ දෙන කතා මාලාවකි."
-},
-
-"it-welcome-to-derry": {
-name:"IT: Welcome to Derry",
-price:100,
-description:"Derry නගරයේ සැඟවුණු රහස් සහ අසාමාන්‍ය භීෂණ සිදුවීම් වටා ගොඩනැගුණු කතා මාලාවකි."
-},
-
-"house-of-the-dragon": {
-name:"House of the Dragon",
-price:250,
-description:"ටාර්ගේරියන් රාජවංශයේ අභ්‍යන්තර බල අරගල, මකරුන් සහ රාජ්‍ය උරුමය සඳහා සිදුවන ගැටුම් පිළිබඳ ෆැන්ටසි කතා මාලාවකි."
-},
-
-"one-piece": {
-name:"One Piece",
-price:200,
-description:"විශාල නිධානයක් සොයා යන තරුණ නායකයෙකු සහ ඔහුගේ කණ්ඩායමේ වික්‍රමාන්විත ගමන පිළිබඳ කතා මාලාවකි."
-},
-
-"robinhood-2026": {
-name:"Robinhood (2026)",
-price:100,
-description:"යුක්තිය සහ අසාධාරණයට එරෙහිව නැගී සිටීම වටා ගොඩනැගුණු Robinhood කතාවේ නව අනුවාදයකි."
-},
-
-"lost": {
-name:"Lost",
-price:600,
-description:"ගුවන් අනතුරකින් පසු දූපතක අතරමං වන පිරිසක් දිවි ගලවා ගැනීමට උත්සාහ කරන අතර දූපතේ රහස් සොයා යන අභිරහස් කතා මාලාවකි."
-},
-
-"outer-banks": {
-name:"Outer Banks",
-price:450,
-description:"සැඟවුණු නිධානයක් සොයා යන තරුණ මිතුරන් පිරිසක් මුහුණ දෙන අභියෝග සහ වික්‍රමාන්විතයන් පිළිබඳ කතා මාලාවකි."
-},
-
-"kingdom": {
-name:"Kingdom",
-price:250,
-description:"රාජධානියක පැතිරෙන අද්භූත වසංගතයක් සහ දේශපාලන කුමන්ත්‍රණ පිළිබඳ කොරියානු ඓතිහාසික කතා මාලාවකි."
-},
-
-"from": {
-name:"From",
-price:300,
-description:"පිටවීමට නොහැකි අභිරහස් නගරයක සිරවන පිරිසක් එහි රහස් සොයා ගනිමින් රාත්‍රියේ ඇතිවන තර්ජනවලින් ආරක්ෂා වීමට උත්සාහ කරති."
-},
-
-"dark": {
-name:"Dark",
-price:300,
-description:"ළමයෙකු අතුරුදහන් වීමෙන් පසු පවුල් කිහිපයක අතීත රහස් සහ කාලය අතර ඇති සංකීර්ණ සම්බන්ධතා හෙළිවන විද්‍යා ප්‍රබන්ධ කතා මාලාවකි."
-},
-
-"duty-after-school": {
-name:"Duty After School",
-price:150,
-description:"පිටසක්වළ තර්ජනයක් හමුවේ හමුදා පුහුණුව ලබන පාසල් සිසුන් පිරිසක් පිළිබඳ කොරියානු විද්‍යා ප්‍රබන්ධ කතා මාලාවකි."
-},
-
-"cobra-kai": {
-name:"Cobra Kai",
-price:350,
-description:"පැරණි කරාටේ ප්‍රතිවාදීන්ගේ ජීවිත නැවත ගැටෙන අතර නව පරපුරේ සිසුන් පුහුණු කරන ආකාරය පෙන්වන නාට්‍ය මාලාවකි."
-},
-
-"the-100": {
-name:"The 100",
-price:500,
-description:"විනාශයෙන් පසු පෘථිවියට පැමිණෙන තරුණයන් සිය දෙනෙකු නව ලෝකයක ජීවත් වීමට උත්සාහ කරන විද්‍යා ප්‍රබන්ධ කතා මාලාවකි."
-},
-
-"lucifer": {
-name:"Lucifer",
-price:500,
-description:"ලොස් ඇන්ජලීස් නගරයේ පොලිස් විමර්ශනවලට සහාය වන අද්භූත චරිතයක් වටා ගොඩනැගුණු කතා මාලාවකි."
-},
-
-"all-of-us-are-dead": {
-name:"All of Us Are Dead",
-price:150,
-description:"පාසලක් තුළ පැතිරෙන සොම්බි වසංගතයකින් බේරීමට උත්සාහ කරන සිසුන් පිරිසක් පිළිබඳ කොරියානු කතා මාලාවකි."
-},
-
-"squid-game": {
-name:"Squid Game",
-price:300,
-description:"විශාල මුදල් ත්‍යාගයක් වෙනුවෙන් අභියෝගාත්මක තරගවලට සහභාගී වන පිරිසක් පිළිබඳ ත්‍රාසජනක කොරියානු කතා මාලාවකි."
-},
-
-"chernobyl": {
-name:"Chernobyl",
-price:150,
-description:"1986 වසරේ චර්නොබිල් න්‍යෂ්ටික අනතුර සහ එහි ප්‍රතිවිපාක නිරූපණය කරන ඓතිහාසික නාට්‍ය මාලාවකි."
-},
-
-"sherlock": {
-name:"Sherlock",
-price:150,
-description:"ලන්ඩනයේ සංකීර්ණ අපරාධ විසඳන විශිෂ්ට රහස් පරීක්ෂකයෙකු සහ ඔහුගේ මිතුරා පිළිබඳ කතා මාලාවකි."
-},
-
-"better-call-saul": {
-name:"Better Call Saul",
-price:450,
-description:"නීතිඥයෙකුගේ ජීවිතය, වෘත්තීය ගැටලු සහ අපරාධ ලෝකය සමඟ ඇති සම්බන්ධතා පිළිබඳ නාට්‍ය මාලාවකි."
-},
-
-"the-boys": {
-name:"The Boys",
-price:300,
-description:"සුපිරි බලයන් ඇති වීරයන්ගේ සැඟවුණු හැසිරීම් හෙළි කිරීමට උත්සාහ කරන පිරිසක් පිළිබඳ ක්‍රියාදාම නාට්‍ය මාලාවකි."
-},
-
-"band-of-brothers": {
-name:"Band of Brothers",
-price:150,
-description:"දෙවන ලෝක යුද්ධ සමයේ සෙබළුන් පිරිසකගේ අත්දැකීම් සහ ඔවුන් අතර ඇති බැඳීම නිරූපණය කරන ඓතිහාසික කතා මාලාවකි."
-},
-
-"the-last-of-us": {
-name:"The Last of Us",
-price:200,
-description:"වසංගතයකින් පසු වෙනස් වූ ලෝකයක ගමන් කරන දෙදෙනෙකුගේ පැවැත්ම සහ මානව සබඳතා පිළිබඳ කතා මාලාවකි."
-},
-
-"dexter": {
-name:"Dexter",
-price:550,
-description:"පොලිස් විද්‍යා අංශයේ සේවය කරන පුද්ගලයෙකුගේ රහසිගත ජීවිතය සහ අපරාධ විමර්ශන පිළිබඳ කතා මාලාවකි."
-},
-
-"narcos": {
-name:"Narcos",
-price:300,
-description:"කොලොම්බියාවේ මත්ද්‍රව්‍ය අපරාධ ජාල සහ ඒවාට එරෙහිව කටයුතු කරන නිලධාරීන් පිළිබඳ අපරාධ නාට්‍ය මාලාවකි."
+  noResults.style.display = filtered.length ? "none" : "block";
 }
 
-};
-<script>
-const params = new URLSearchParams(window.location.search);
-const key = params.get("show");
-const item = series[key];
+search.addEventListener("input", renderSeries);
 
-if (item) {
-  document.title = item.name + " | LK TV SERIES HUB";
+document.querySelectorAll(".filter-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.classList.remove("active");
+    });
 
-  document.getElementById("title").textContent = item.name;
-  document.getElementById("description").textContent =
-    item.description;
+    button.classList.add("active");
+    activeFilter = button.dataset.filter;
+    renderSeries();
+  });
+});
 
-  document.getElementById("price").textContent =
-    "රු. " + item.price + "/=";
-
-  const buyMessage =
-    "Hello LK TV SERIES HUB! I want to buy " +
-    item.name +
-    ". Price: Rs. " +
-    item.price;
-
-  document.getElementById("buy").href =
-    "https://wa.me/94714540217?text=" +
-    encodeURIComponent(buyMessage);
-
-  const paymentMessage =
-    "Hello LK TV SERIES HUB! Please send me Bank Transfer and Mobile Reload payment details for " +
-    item.name;
-
-  document.getElementById("paymentButton").href =
-    "https://wa.me/94714540217?text=" +
-    encodeURIComponent(paymentMessage);
-
-} else {
-  document.getElementById("title").textContent =
-    "Series එක හමු වුණේ නැහැ";
-
-  document.getElementById("description").textContent =
-    "Home Page එකට ගොස් අවශ්‍ය TV Series එක තෝරන්න.";
-
-  document.getElementById("price").textContent = "";
-
-  document.getElementById("buy").style.display = "none";
-  document.getElementById("paymentButton").style.display = "none";
-}
+renderSeries();
 </script>
 
 </body>

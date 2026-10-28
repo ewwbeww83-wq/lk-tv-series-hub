@@ -1,3 +1,241 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LK TV SERIES HUB | Series Details</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #080808;
+  color: #fff;
+}
+
+header {
+  text-align: center;
+  padding: 20px 10px;
+  border-bottom: 2px solid #ff1010;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  color: #ff2020;
+  text-shadow: 0 0 12px #ff0000;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #ccc;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+}
+
+.series-card {
+  background: #141414;
+  border: 1px solid #ff2020;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.2);
+}
+
+.series-title {
+  color: #ff2929;
+  font-size: 30px;
+  margin-top: 0;
+  overflow-wrap: anywhere;
+}
+
+.badge {
+  display: inline-block;
+  padding: 7px 12px;
+  background: #290707;
+  color: #ff6565;
+  border: 1px solid #ff3030;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.description {
+  color: #eee;
+  font-size: 16px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.price {
+  color: #39ff88;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 22px 0;
+}
+
+.info-box {
+  background: #1d1d1d;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 18px 0;
+  line-height: 1.8;
+}
+
+.info-box h3 {
+  color: #ff4545;
+  margin-top: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 18px;
+  margin: 6px 4px;
+  background: #e50914;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #ff5555;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.25);
+  transition: 0.25s;
+}
+
+.button:hover {
+  background: #b80000;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.6);
+}
+
+.back-button {
+  background: #222;
+  border-color: #777;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.not-found {
+  text-align: center;
+  padding: 35px 15px;
+}
+
+.not-found h2 {
+  color: #ff3030;
+}
+
+footer {
+  text-align: center;
+  color: #888;
+  font-size: 13px;
+  margin-top: 35px;
+  padding: 20px 0;
+  border-top: 1px solid #333;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  body {
+    padding: 12px;
+  }
+
+  .series-card {
+    padding: 18px;
+  }
+
+  .series-title {
+    font-size: 25px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 22px;
+  }
+
+  .button {
+    padding: 12px 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>LK TV SERIES HUB</h1>
+  <p>Premium TV Series Collection</p>
+  <p>Sinhala Subtitles Collection</p>
+</header>
+
+<main class="container">
+
+  <section id="details" class="series-card hidden">
+    <span class="badge">📺 TV SERIES DETAILS</span>
+
+    <h2 class="series-title" id="title"></h2>
+
+    <p class="description" id="description"></p>
+
+    <div class="info-box">
+      <h3>📦 Collection Details</h3>
+      <p>🎬 TV Series Collection</p>
+      <p>💬 Sinhala subtitles availability should be confirmed before purchase.</p>
+      <p>💳 Payment Methods: Bank Transfer / Mobile Reload</p>
+    </div>
+
+    <p class="price" id="price"></p>
+
+    <div class="buttons">
+      <a id="buyButton" class="button" href="#" target="_blank" rel="noopener">
+        BUY NOW VIA WHATSAPP
+      </a>
+
+      <a
+        class="button"
+        href="https://whatsapp.com/channel/0029VbD0cA9D38CMYzGk2q3X/122"
+        target="_blank"
+        rel="noopener"
+      >
+        VIEW PROOF
+      </a>
+
+      <a class="button back-button" href="./index.html">
+        ← BACK TO HOME
+      </a>
+    </div>
+  </section>
+
+  <section id="notFound" class="series-card not-found hidden">
+    <h2>Series Not Found!</h2>
+    <p>ඔබ තෝරාගත් TV Series එක සොයාගත නොහැක.</p>
+    <a class="button" href="./index.html">VIEW ALL SERIES</a>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 LK TV SERIES HUB</p>
+  <p>All rights belong to their respective owners.</p>
+</footer>
+
+<script>
 const series = {
 
   "breaking-bad": {
@@ -217,3 +455,39 @@ const series = {
   }
 
 };
+
+const params = new URLSearchParams(window.location.search);
+const key = params.get("show");
+const item = series[key];
+
+const details = document.getElementById("details");
+const notFound = document.getElementById("notFound");
+
+if (item) {
+  details.classList.remove("hidden");
+
+  document.title = item.name + " | LK TV SERIES HUB";
+
+  document.getElementById("title").textContent = item.name;
+  document.getElementById("description").textContent = item.description;
+  document.getElementById("price").textContent =
+    "මිල: රු. " + item.price + "/=";
+
+  const message =
+    "Hi LK TV SERIES HUB, I want to buy " +
+    item.name +
+    ". Price: Rs. " +
+    item.price +
+    ". Please send me the payment details.";
+
+  document.getElementById("buyButton").href =
+    "https://wa.me/94714540217?text=" +
+    encodeURIComponent(message);
+
+} else {
+  notFound.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>

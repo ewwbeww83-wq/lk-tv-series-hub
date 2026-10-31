@@ -13,7 +13,6 @@
   --red: #ff123d;
   --red2: #c9002d;
   --black: #050505;
-  --glass: rgba(255,255,255,.055);
 }
 
 * {
@@ -248,7 +247,6 @@ nav a:hover {
   font-size: clamp(150px,28vw,330px);
   font-weight: 800;
   color: rgba(255,255,255,.025);
-  text-shadow: 0 0 60px rgba(255,0,50,.1);
   pointer-events: none;
 }
 
@@ -303,8 +301,6 @@ nav a:hover {
   box-shadow: 0 0 30px red;
 }
 
-/* HERO DECORATION */
-
 .hero-light {
   position: absolute;
   right: 8%;
@@ -312,7 +308,8 @@ nav a:hover {
   height: 280px;
   border: 1px solid rgba(255,0,50,.25);
   border-radius: 50%;
-  box-shadow: 0 0 50px rgba(255,0,50,.12), inset 0 0 50px rgba(255,0,50,.1);
+  box-shadow: 0 0 50px rgba(255,0,50,.12),
+              inset 0 0 50px rgba(255,0,50,.1);
 }
 
 .hero-light::before,
@@ -333,7 +330,6 @@ nav a:hover {
 
 .category-wrap {
   padding: 0 4%;
-  margin-top: -1px;
 }
 
 .categories {
@@ -475,20 +471,6 @@ nav a:hover {
 
 .series-card:hover .art-symbol {
   transform: scale(1.13);
-}
-
-.card-number {
-  position: absolute;
-  z-index: 3;
-  top: 10px;
-  left: 10px;
-  font-family: Orbitron;
-  font-size: 10px;
-  color: white;
-  background: rgba(0,0,0,.55);
-  padding: 6px 9px;
-  border-radius: 6px;
-  backdrop-filter: blur(10px);
 }
 
 .card-content {
@@ -1067,7 +1049,7 @@ try {
   watchlist = [];
 }
 
-/* CREATE CARD */
+/* CREATE CARD - LK SERIES BADGE REMOVED */
 
 function createCard(item,index) {
 
@@ -1083,10 +1065,6 @@ function createCard(item,index) {
 
     <div class="card-art"
       style="--glow:${palette[0]};--shade:${palette[1]}">
-
-      <div class="card-number">
-        LK SERIES
-      </div>
 
       <div class="art-symbol">
         ${symbol}

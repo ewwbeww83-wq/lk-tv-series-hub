@@ -1,314 +1,257 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LK TV SERIES HUB | Sinhala Subtitles</title>
-
-<meta name="description" content="LK TV SERIES HUB - TV Series Collection with Sinhala Subtitles">
+<title>LK TV SERIES HUB</title>
 
 <style>
 * {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background: #080000;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 header {
-  text-align: center;
-  padding: 30px 15px;
-  background: linear-gradient(135deg, #080000, #350000, #100000);
-  border-bottom: 2px solid #ff1717;
-  box-shadow: 0 0 25px #ff000044;
+    background: #111;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid red;
+    box-shadow: 0 0 15px red;
 }
 
 .logo {
-  margin: 0;
-  font-size: clamp(27px, 6vw, 44px);
-  color: #ff2020;
-  text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000;
-  font-weight: 900;
+    font-size: 27px;
+    font-weight: bold;
+    color: white;
 }
 
-.tagline {
-  color: #eeeeee;
-  margin: 10px 0;
-  font-size: 14px;
-  letter-spacing: 2px;
+.logo span {
+    color: red;
 }
 
-.header-label {
-  display: inline-block;
-  padding: 6px 15px;
-  margin-top: 8px;
-  color: #ffffff;
-  background: #8e0000;
-  border: 1px solid #ff3030;
-  border-radius: 30px;
-  font-size: 12px;
+header p {
+    color: #aaa;
+    margin-top: 7px;
+    font-size: 12px;
 }
 
 .hero {
-  text-align: center;
-  padding: 30px 15px 20px;
+    padding: 35px 15px;
+    text-align: center;
+    background: linear-gradient(135deg, #180000, #080808);
 }
 
-.hero h2 {
-  color: #ff3030;
-  font-size: 25px;
-  text-shadow: 0 0 12px #ff000055;
+.hero h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: red;
 }
 
 .hero p {
-  color: #cccccc;
-  line-height: 1.8;
+    color: #bbb;
+    font-size: 14px;
 }
 
-.search-area {
-  max-width: 700px;
-  margin: 20px auto;
-  padding: 0 15px;
+.search-box {
+    max-width: 500px;
+    margin: 22px auto 0;
 }
 
-#search {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #ff2525;
-  border-radius: 10px;
-  background: #160909;
-  color: #ffffff;
-  outline: none;
-  font-size: 16px;
-  box-shadow: 0 0 12px #ff000022;
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 25px;
+    border: 1px solid red;
+    background: #151515;
+    color: white;
+    outline: none;
+    font-size: 15px;
 }
 
-#search:focus {
-  box-shadow: 0 0 18px #ff000066;
-}
-
-#search::placeholder {
-  color: #aaaaaa;
-}
-
-.filter-area {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 15px 0;
-}
-
-.filter-btn {
-  padding: 9px 15px;
-  border: 1px solid #ff3030;
-  background: #190707;
-  color: white;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-.filter-btn.active,
-.filter-btn:hover {
-  background: #d90000;
-  box-shadow: 0 0 12px #ff000055;
+.section {
+    padding: 22px 15px;
 }
 
 .section-title {
-  text-align: center;
-  color: #ff3030;
-  margin: 30px 0 20px;
-  font-size: 25px;
+    font-size: 21px;
+    border-left: 4px solid red;
+    padding-left: 10px;
+    margin-bottom: 18px;
 }
 
-#seriesCount {
-  text-align: center;
-  color: #bbbbbb;
-  font-size: 14px;
-  margin-bottom: 20px;
+.filters {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.filters button {
+    flex-shrink: 0;
+    padding: 9px 17px;
+    border-radius: 20px;
+    background: #181818;
+    border: 1px solid #444;
+    color: white;
+    cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: red;
+    border-color: red;
 }
 
 .series-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  width: 94%;
-  max-width: 1100px;
-  margin: 0 auto 35px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
-.series-card {
-  background: linear-gradient(145deg, #200909, #0d0505);
-  border: 1px solid #8e1515;
-  border-radius: 12px;
-  padding: 15px 12px;
-  text-align: center;
-  box-shadow: 0 0 12px #ff000015;
-  transition: transform 0.2s, box-shadow 0.2s;
-  min-width: 0;
+.card {
+    background: #151515;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    position: relative;
 }
 
-.series-card:hover {
-  transform: translateY(-3px);
-  border-color: #ff3030;
-  box-shadow: 0 0 18px #ff000044;
+.card:hover {
+    transform: translateY(-5px);
+    border-color: red;
+    box-shadow: 0 0 15px #650000;
 }
 
-.series-icon {
-  font-size: 32px;
-  margin-bottom: 8px;
+.poster {
+    height: 145px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #350000, #111);
+    font-size: 48px;
 }
 
-.series-card h3 {
-  color: #ff4141;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 5px 0 10px;
-  overflow-wrap: anywhere;
+.card-content {
+    padding: 12px;
 }
 
-.subtitle-label {
-  display: inline-block;
-  color: #ffbaba;
-  border: 1px solid #6f2020;
-  padding: 3px 7px;
-  border-radius: 5px;
-  font-size: 10px;
-  margin-bottom: 8px;
+.card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
 }
 
-.series-price {
-  font-size: 21px;
-  color: #ffffff;
-  font-weight: bold;
-  margin: 8px 0 12px;
+.price {
+    color: #ff3333;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
 
-.series-price span {
-  color: #ff3030;
+.card-buttons {
+    display: flex;
+    gap: 6px;
 }
 
-.card-btn {
-  display: block;
-  text-decoration: none;
-  padding: 10px 5px;
-  margin-top: 8px;
-  border-radius: 7px;
-  color: #ffffff;
-  background: linear-gradient(90deg, #970000, #f01818);
-  border: 1px solid #ff4141;
-  font-weight: bold;
-  font-size: 12px;
+.card-buttons a {
+    flex: 1;
+    text-align: center;
+    padding: 9px 4px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
 }
 
-.card-btn:hover {
-  background: #ff2929;
-  box-shadow: 0 0 12px #ff000055;
+.details-btn {
+    background: #292929;
+    color: white;
 }
 
-.no-results {
-  display: none;
-  text-align: center;
-  color: #ff5555;
-  padding: 30px 10px;
+.buy-btn {
+    background: red;
+    color: white;
 }
 
-.payment-section {
-  width: 92%;
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #150606;
-  border: 1px solid #ff2525;
-  border-radius: 14px;
-  box-shadow: 0 0 18px #ff000022;
+.fav-btn {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    background: #111;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 17px;
 }
 
-.payment-section h2 {
-  color: #ff3030;
-  text-align: center;
+.fav-btn.saved {
+    color: red;
+    border-color: red;
 }
 
-.payment-option {
-  background: #220909;
-  border-left: 4px solid #ff2020;
-  padding: 12px;
-  margin: 12px 0;
-  border-radius: 6px;
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    padding: 5px 8px;
+    font-size: 10px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
-.payment-option h3 {
-  color: #ff5555;
-  margin: 0;
-  font-size: 17px;
-}
-
-.payment-option p {
-  color: #dddddd;
-  line-height: 1.7;
-  margin-bottom: 0;
-}
-
-.main-btn {
-  display: block;
-  text-align: center;
-  text-decoration: none;
-  color: #ffffff;
-  background: linear-gradient(90deg, #940000, #ff1616);
-  padding: 13px;
-  border: 1px solid #ff4545;
-  border-radius: 8px;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-.proof-btn {
-  background: #210909;
-  border: 1px solid #ff3030;
+.empty {
+    color: #aaa;
+    text-align: center;
+    padding: 30px 10px;
+    display: none;
 }
 
 footer {
-  text-align: center;
-  padding: 25px 15px;
-  border-top: 1px solid #ff2525;
-  background: #0d0303;
-  color: #aaaaaa;
-  font-size: 13px;
-  line-height: 1.8;
+    text-align: center;
+    background: #111;
+    padding: 25px 10px;
+    margin-top: 30px;
+    border-top: 1px solid red;
+    color: #aaa;
+    font-size: 12px;
 }
 
-footer strong {
-  color: #ff3030;
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    background: #25d366;
+    color: white;
+    padding: 13px 17px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 999;
 }
 
-@media (min-width: 650px) {
-  .series-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .series-card {
-    padding: 20px 15px;
-  }
-
-  .series-card h3 {
-    font-size: 18px;
-  }
+@media(min-width:650px) {
+    .series-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-@media (min-width: 950px) {
-  .series-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+@media(min-width:950px) {
+    .series-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 </style>
 </head>
@@ -316,192 +259,280 @@ footer strong {
 <body>
 
 <header>
-  <h1 class="logo">LK TV SERIES HUB</h1>
-  <p class="tagline">PREMIUM SERIES COLLECTION</p>
-  <div class="header-label">🇱🇰 SINHALA SUBTITLES</div>
+    <div class="logo">LK <span>TV SERIES</span> HUB</div>
+    <p>YOUR ULTIMATE SERIES COLLECTION</p>
 </header>
 
 <section class="hero">
-  <h2>🔥 PREMIUM TV SERIES 🔥</h2>
-  <p>
-    ඔයා කැමතිම TV Series එක තෝරගන්න.<br>
-    විස්තර, මිල ගණන් සහ මිලදී ගැනීමේ තොරතුරු මෙතැනින් බලන්න.
-  </p>
+    <h1>WELCOME TO <span>LK SERIES HUB</span></h1>
+    <p>Discover Your Favourite TV Series Collection</p>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search your favourite series..."
+            oninput="renderSeries()"
+        >
+    </div>
 </section>
 
-<div class="search-area">
-  <input
-    type="search"
-    id="search"
-    placeholder="🔍 Series නම Search කරන්න..."
-    aria-label="Search TV series"
-  >
+<section class="section">
+    <h2 class="section-title">🎭 Categories</h2>
 
-  <div class="filter-area">
-    <button class="filter-btn active" data-filter="all">ALL SERIES</button>
-    <button class="filter-btn" data-filter="action">ACTION</button>
-    <button class="filter-btn" data-filter="crime">CRIME</button>
-    <button class="filter-btn" data-filter="fantasy">FANTASY</button>
-    <button class="filter-btn" data-filter="drama">DRAMA</button>
-  </div>
-</div>
+    <div class="filters" id="filters">
+        <button class="active" onclick="setCategory('All',this)">All</button>
+        <button onclick="setCategory('Action',this)">Action</button>
+        <button onclick="setCategory('Drama',this)">Drama</button>
+        <button onclick="setCategory('Crime',this)">Crime</button>
+        <button onclick="setCategory('Horror',this)">Horror</button>
+        <button onclick="setCategory('Sci-Fi',this)">Sci-Fi</button>
+        <button onclick="setCategory('Fantasy',this)">Fantasy</button>
+        <button onclick="setCategory('Mystery',this)">Mystery</button>
+    </div>
+</section>
 
-<h2 class="section-title">🎬 OUR SERIES COLLECTION</h2>
-<p id="seriesCount"></p>
+<section class="section">
+    <h2 class="section-title">🔥 TRENDING SERIES</h2>
+    <div class="series-grid" id="trending"></div>
+</section>
 
-<main class="series-grid" id="seriesGrid"></main>
+<section class="section">
+    <h2 class="section-title">🏆 TOP 10 SERIES</h2>
+    <div class="series-grid" id="top10"></div>
+</section>
 
-<p class="no-results" id="noResults">
-  මේ නමින් Series එකක් හමු වුණේ නැහැ.
-</p>
+<section class="section">
+    <h2 class="section-title">❤️ MY WATCHLIST</h2>
+    <div class="series-grid" id="watchlist"></div>
+    <div class="empty" id="emptyWatch">No favourite series added yet.</div>
+</section>
 
-<section class="payment-section">
-  <h2>💳 PAYMENT METHODS</h2>
-
-  <div class="payment-option">
-    <h3>🏦 BANK TRANSFER</h3>
-    <p>
-      Bank Transfer මගින් ගෙවීමට අවශ්‍ය නම්
-      WhatsApp හරහා ගෙවීම් විස්තර ලබාගන්න.
-    </p>
-  </div>
-
-  <div class="payment-option">
-    <h3>📱 MOBILE RELOAD</h3>
-    <p>
-      Mobile Reload මගින් ගෙවීමට අවශ්‍ය නම්
-      WhatsApp හරහා විමසන්න.
-    </p>
-  </div>
-
-  <a
-    class="main-btn"
-    href="https://wa.me/94714540217?text=Hello%20LK%20TV%20SERIES%20HUB%2C%20please%20send%20payment%20details."
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    📲 PAYMENT DETAILS ලබාගන්න
-  </a>
-
-  <a
-    class="main-btn proof-btn"
-    href="https://whatsapp.com/channel/0029VbD0cA9D38CMYzGk2q3X/122"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    ✅ PAYMENT PROOFS
-  </a>
+<section class="section">
+    <h2 class="section-title">🎬 ALL SERIES COLLECTION</h2>
+    <div class="series-grid" id="allSeries"></div>
+    <div class="empty" id="emptySearch">No series found!</div>
 </section>
 
 <footer>
-  <p><strong>LK TV SERIES HUB</strong></p>
-  <p>PREMIUM TV SERIES COLLECTION</p>
-  <p>© 2026 LK TV SERIES HUB</p>
+    <h3>LK TV SERIES HUB</h3>
+    <br>
+    © 2026 LK TV SERIES HUB<br><br>
+    All Rights Reserved.
 </footer>
 
+<a class="whatsapp"
+href="https://wa.me/94714540217"
+target="_blank">WhatsApp</a>
+
 <script>
-const series = [
-  {name:"Breaking Bad",file:"breaking-bad",price:400,icon:"🧪",category:"crime"},
-  {name:"Sex Education",file:"sex-education",price:300,icon:"🎓",category:"drama"},
-  {name:"Vikings: Valhalla",file:"vikings-valhalla",price:200,icon:"⚔️",category:"action"},
-  {name:"Game of Thrones",file:"game-of-thrones",price:500,icon:"🐉",category:"fantasy"},
-  {name:"Prison Break",file:"prison-break",price:450,icon:"🔐",category:"crime"},
-  {name:"Peaky Blinders",file:"peaky-blinders",price:350,icon:"🎩",category:"crime"},
-  {name:"The Walking Dead",file:"the-walking-dead",price:600,icon:"🧟",category:"action"},
-  {name:"Money Heist",file:"money-heist",price:450,icon:"💰",category:"crime"},
-  {name:"Teen Wolf",file:"teen-wolf",price:400,icon:"🐺",category:"fantasy"},
-  {name:"Stranger Things",file:"stranger-things",price:400,icon:"👾",category:"fantasy"},
-  {name:"Reacher",file:"reacher",price:300,icon:"🥊",category:"action"},
-  {name:"True Blood",file:"true-blood",price:450,icon:"🧛",category:"fantasy"},
-  {name:"The Flash",file:"the-flash",price:500,icon:"⚡",category:"action"},
-  {name:"IT: Welcome to Derry",file:"it-welcome-to-derry",price:100,icon:"🎈",category:"fantasy"},
-  {name:"House of the Dragon",file:"house-of-the-dragon",price:250,icon:"🐲",category:"fantasy"},
-  {name:"One Piece",file:"one-piece",price:200,icon:"🏴‍☠️",category:"action"},
-  {name:"Robinhood (2026)",file:"robinhood-2026",price:100,icon:"🏹",category:"action"},
-  {name:"Lost",file:"lost",price:600,icon:"🏝️",category:"drama"},
-  {name:"Outer Banks",file:"outer-banks",price:450,icon:"🌊",category:"drama"},
-  {name:"Kingdom",file:"kingdom",price:250,icon:"👑",category:"action"},
-  {name:"From",file:"from",price:300,icon:"🌑",category:"fantasy"},
-  {name:"Dark",file:"dark",price:300,icon:"⌛",category:"fantasy"},
-  {name:"Duty After School",file:"duty-after-school",price:150,icon:"🎖️",category:"action"},
-  {name:"Cobra Kai",file:"cobra-kai",price:350,icon:"🥋",category:"action"},
-  {name:"The 100",file:"the-100",price:500,icon:"🚀",category:"fantasy"},
-  {name:"Lucifer",file:"lucifer",price:500,icon:"😈",category:"fantasy"},
-  {name:"All of Us Are Dead",file:"all-of-us-are-dead",price:150,icon:"🧟",category:"action"},
-  {name:"Squid Game",file:"squid-game",price:300,icon:"🎮",category:"drama"},
-  {name:"Chernobyl",file:"chernobyl",price:150,icon:"☢️",category:"drama"},
-  {name:"Sherlock",file:"sherlock",price:150,icon:"🔎",category:"crime"},
-  {name:"Better Call Saul",file:"better-call-saul",price:450,icon:"⚖️",category:"crime"},
-  {name:"The Boys",file:"the-boys",price:300,icon:"💥",category:"action"},
-  {name:"Band of Brothers",file:"band-of-brothers",price:150,icon:"🪖",category:"action"},
-  {name:"The Last of Us",file:"the-last-of-us",price:200,icon:"🍄",category:"drama"},
-  {name:"Dexter",file:"dexter",price:550,icon:"🕵️",category:"crime"},
-  {name:"Narcos",file:"narcos",price:300,icon:"🚔",category:"crime"}
+
+const seriesList = [
+
+{name:"Breaking Bad",key:"breaking-bad",price:400,icon:"🧪",category:"Crime",trending:true,top:true},
+
+{name:"Sex Education",key:"sex-education",price:300,icon:"🎓",category:"Drama"},
+
+{name:"Vikings: Valhalla",key:"vikings-valhalla",price:200,icon:"⚔️",category:"Action",trending:true},
+
+{name:"Game of Thrones",key:"game-of-thrones",price:500,icon:"🐉",category:"Fantasy",trending:true,top:true},
+
+{name:"Prison Break",key:"prison-break",price:450,icon:"🔓",category:"Action",trending:true,top:true},
+
+{name:"Peaky Blinders",key:"peaky-blinders",price:350,icon:"🎩",category:"Crime",top:true},
+
+{name:"The Walking Dead",key:"the-walking-dead",price:600,icon:"🧟",category:"Horror",trending:true},
+
+{name:"Money Heist",key:"money-heist",price:450,icon:"💰",category:"Crime",trending:true,top:true},
+
+{name:"Teen Wolf",key:"teen-wolf",price:400,icon:"🐺",category:"Fantasy"},
+
+{name:"Stranger Things",key:"stranger-things",price:400,icon:"👾",category:"Sci-Fi",trending:true,top:true},
+
+{name:"Reacher",key:"reacher",price:300,icon:"👊",category:"Action"},
+
+{name:"True Blood",key:"true-blood",price:450,icon:"🩸",category:"Fantasy"},
+
+{name:"The Flash",key:"the-flash",price:500,icon:"⚡",category:"Sci-Fi"},
+
+{name:"IT: Welcome to Derry",key:"it-welcome-to-derry",price:100,icon:"🎈",category:"Horror"},
+
+{name:"House of the Dragon",key:"house-of-the-dragon",price:250,icon:"🐲",category:"Fantasy",top:true},
+
+{name:"One Piece",key:"one-piece",price:200,icon:"🏴‍☠️",category:"Action"},
+
+{name:"Robinhood (2026)",key:"robinhood-2026",price:100,icon:"🏹",category:"Action"},
+
+{name:"Lost",key:"lost",price:600,icon:"🏝️",category:"Mystery"},
+
+{name:"Outer Banks",key:"outer-banks",price:450,icon:"🌊",category:"Drama"},
+
+{name:"Kingdom",key:"kingdom",price:250,icon:"👑",category:"Horror"},
+
+{name:"From",key:"from",price:300,icon:"🌲",category:"Mystery",trending:true},
+
+{name:"Dark",key:"dark",price:300,icon:"⏳",category:"Sci-Fi"},
+
+{name:"Duty After School",key:"duty-after-school",price:150,icon:"🎖️",category:"Action"},
+
+{name:"Cobra Kai",key:"cobra-kai",price:350,icon:"🥋",category:"Action"},
+
+{name:"The 100",key:"the-100",price:500,icon:"🚀",category:"Sci-Fi"},
+
+{name:"Lucifer",key:"lucifer",price:500,icon:"😈",category:"Fantasy",top:true},
+
+{name:"All of Us Are Dead",key:"all-of-us-are-dead",price:150,icon:"🧟",category:"Horror"},
+
+{name:"Squid Game",key:"squid-game",price:300,icon:"🎮",category:"Drama",trending:true},
+
+{name:"Chernobyl",key:"chernobyl",price:150,icon:"☢️",category:"Drama"},
+
+{name:"Sherlock",key:"sherlock",price:150,icon:"🔎",category:"Mystery"},
+
+{name:"Better Call Saul",key:"better-call-saul",price:450,icon:"⚖️",category:"Crime"},
+
+{name:"The Boys",key:"the-boys",price:300,icon:"🦸",category:"Action",top:true},
+
+{name:"Band of Brothers",key:"band-of-brothers",price:150,icon:"🎖️",category:"Drama"},
+
+{name:"The Last of Us",key:"the-last-of-us",price:200,icon:"🍄",category:"Sci-Fi"},
+
+{name:"Dexter",key:"dexter",price:550,icon:"🔪",category:"Crime"},
+
+{name:"Narcos",key:"narcos",price:300,icon:"🚔",category:"Crime"}
+
 ];
 
-const grid = document.getElementById("seriesGrid");
-const search = document.getElementById("search");
-const count = document.getElementById("seriesCount");
-const noResults = document.getElementById("noResults");
+let selectedCategory = "All";
 
-let activeFilter = "all";
+let favourites = JSON.parse(
+    localStorage.getItem("lkWatchlist") || "[]"
+);
 
-function renderSeries() {
-  const query = search.value.trim().toLowerCase();
+function createCard(item) {
 
-  const filtered = series.filter(item => {
-    const matchesName = item.name.toLowerCase().includes(query);
-    const matchesCategory =
-      activeFilter === "all" || item.category === activeFilter;
+    let saved = favourites.includes(item.key);
 
-    return matchesName && matchesCategory;
-  });
+    return `
+    <div class="card">
 
-  grid.innerHTML = filtered.map(item => `
-    <article class="series-card">
-      <div class="series-icon">${item.icon}</div>
-      <h3>${item.name}</h3>
-      <div class="subtitle-label">🇱🇰 SINHALA SUBTITLES</div>
-      <p class="series-price"><span>Rs.</span> ${item.price}/=</p>
+        ${item.trending ? '<span class="badge">🔥 TRENDING</span>' : ''}
 
-      <a class="card-btn"
-         href="series.html?show=${encodeURIComponent(item.file)}">
-         📖 VIEW DETAILS
-      </a>
+        <button class="fav-btn ${saved ? 'saved' : ''}"
+        onclick="toggleFavourite('${item.key}')">
+        ${saved ? '♥' : '♡'}
+        </button>
 
-      <a class="card-btn"
-         href="https://wa.me/94714540217?text=${encodeURIComponent(
-           "Hello LK TV SERIES HUB! I want to buy " +
-           item.name + ". Price: Rs. " + item.price
-         )}"
-         target="_blank"
-         rel="noopener noreferrer">
-         📲 BUY NOW
-      </a>
-    </article>
-  `).join("");
+        <div class="poster">${item.icon}</div>
 
-  count.textContent =
-    "Series ගණන: " + filtered.length + " / " + series.length;
+        <div class="card-content">
 
-  noResults.style.display = filtered.length ? "none" : "block";
+            <h3>${item.name}</h3>
+
+            <div class="price">Rs. ${item.price}/=</div>
+
+            <div class="card-buttons">
+
+                <a class="details-btn"
+                href="series.html?show=${item.key}">
+                DETAILS
+                </a>
+
+                <a class="buy-btn"
+                href="https://wa.me/94714540217?text=${encodeURIComponent('I want to order '+item.name)}"
+                target="_blank">
+                BUY NOW
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+    `;
 }
 
-search.addEventListener("input", renderSeries);
+function renderSeries() {
 
-document.querySelectorAll(".filter-btn").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-      btn.classList.remove("active");
+    let search = document
+        .getElementById("search")
+        .value.toLowerCase();
+
+    let filtered = seriesList.filter(item => {
+
+        let matchesSearch =
+            item.name.toLowerCase().includes(search);
+
+        let matchesCategory =
+            selectedCategory === "All" ||
+            item.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+
     });
 
-    button.classList.add("active");
-    activeFilter = button.dataset.filter;
+    document.getElementById("allSeries").innerHTML =
+        filtered.map(createCard).join("");
+
+    document.getElementById("emptySearch").style.display =
+        filtered.length ? "none" : "block";
+
+    document.getElementById("trending").innerHTML =
+        seriesList
+        .filter(item => item.trending)
+        .map(createCard).join("");
+
+    document.getElementById("top10").innerHTML =
+        seriesList
+        .filter(item => item.top)
+        .map(createCard).join("");
+
+    let favItems = seriesList.filter(
+        item => favourites.includes(item.key)
+    );
+
+    document.getElementById("watchlist").innerHTML =
+        favItems.map(createCard).join("");
+
+    document.getElementById("emptyWatch").style.display =
+        favItems.length ? "none" : "block";
+}
+
+function toggleFavourite(key) {
+
+    if (favourites.includes(key)) {
+
+        favourites = favourites.filter(
+            item => item !== key
+        );
+
+    } else {
+
+        favourites.push(key);
+
+    }
+
+    localStorage.setItem(
+        "lkWatchlist",
+        JSON.stringify(favourites)
+    );
+
     renderSeries();
-  });
-});
+}
+
+function setCategory(category,button) {
+
+    selectedCategory = category;
+
+    document.querySelectorAll(".filters button")
+    .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderSeries();
+}
 
 renderSeries();
+
 </script>
 
 </body>

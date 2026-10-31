@@ -1,856 +1,704 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="si">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LK TV SERIES HUB</title><style>
+<title>LK TV SERIES HUB</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap');
+
+:root {
+  --red: #ff1744;
+  --dark: #080808;
+  --glass: rgba(255,255,255,.055);
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #080808;
-    color: white;
-    font-family: Arial, sans-serif;
+  background: #080808;
+  color: white;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  overflow-x: hidden;
 }
 
-/* LOADING SCREEN */
-
-#lk-loader {
-    position: fixed;
-    inset: 0;
-    background: #050505;
-    z-index: 99999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: opacity .7s ease, visibility .7s ease;
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: #ff003c;
+  filter: blur(180px);
+  opacity: .12;
+  top: -180px;
+  left: -180px;
+  z-index: -1;
 }
 
-#lk-loader.hide {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+body::after {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  background: #a00020;
+  filter: blur(180px);
+  opacity: .12;
+  bottom: -180px;
+  right: -150px;
+  z-index: -1;
+}
+
+/* LOADING */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: .5s;
 }
 
 .loader-logo {
-    font-size: 32px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: white;
-    text-shadow: 0 0 15px red, 0 0 30px red;
-    animation: logoPulse 1.2s infinite alternate;
-    text-align: center;
-}
-
-.loader-logo span,
-.logo span {
-    color: red;
-}
-
-.loader-text {
-    color: #aaa;
-    font-size: 11px;
-    letter-spacing: 4px;
-    margin-top: 15px;
-    text-align: center;
+  font-family: Orbitron;
+  font-size: 24px;
+  color: var(--red);
+  text-shadow: 0 0 20px var(--red);
+  text-align: center;
 }
 
 .loader-bar {
-    width: 170px;
-    height: 4px;
-    background: #292929;
-    margin-top: 25px;
-    border-radius: 10px;
-    overflow: hidden;
+  width: 200px;
+  height: 4px;
+  background: #333;
+  margin-top: 25px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .loader-progress {
-    height: 100%;
-    width: 0;
-    background: red;
-    box-shadow: 0 0 15px red;
-    animation: loading 1.8s ease forwards;
+  width: 0;
+  height: 100%;
+  background: var(--red);
+  box-shadow: 0 0 15px var(--red);
+  animation: loading 2s forwards;
 }
 
 @keyframes loading {
-    to { width: 100%; }
-}
-
-@keyframes logoPulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.07); }
+  to { width: 100%; }
 }
 
 /* HEADER */
 
 header {
-    background: #111;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid red;
-    box-shadow: 0 0 15px red;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 17px 6%;
+  background: rgba(5,5,5,.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,23,68,.25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    font-size: 27px;
-    font-weight: bold;
+  font-family: Orbitron;
+  font-size: 20px;
+  font-weight: 800;
+  color: white;
 }
 
-header p {
-    color: #aaa;
-    margin-top: 7px;
-    font-size: 12px;
+.logo span {
+  color: var(--red);
+  text-shadow: 0 0 15px var(--red);
+}
+
+.header-tag {
+  font-size: 10px;
+  color: #ff718c;
+  letter-spacing: 2px;
 }
 
 /* HERO */
 
 .hero {
-    padding: 35px 15px;
-    text-align: center;
-    background: linear-gradient(135deg, #180000, #080808);
+  padding: 65px 6% 45px;
+  text-align: center;
+}
+
+.hero-label {
+  color: var(--red);
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-family: Orbitron;
+  margin-bottom: 18px;
 }
 
 .hero h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+  font-family: Orbitron;
+  font-size: clamp(28px,5vw,55px);
+  line-height: 1.3;
 }
 
 .hero h1 span {
-    color: red;
+  color: var(--red);
+  text-shadow: 0 0 25px rgba(255,23,68,.7);
 }
 
 .hero p {
-    color: #bbb;
-    font-size: 14px;
+  color: #aaa;
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+/* SEARCH */
+
+.search-area {
+  max-width: 650px;
+  margin: 25px auto 35px;
+  padding: 0 18px;
 }
 
 .search-box {
-    max-width: 500px;
-    margin: 22px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,23,68,.4);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 25px rgba(255,0,50,.08);
 }
 
 .search-box input {
-    width: 100%;
-    padding: 14px;
-    border-radius: 25px;
-    border: 1px solid red;
-    background: #151515;
-    color: white;
-    outline: none;
-    font-size: 15px;
-}
-
-/* SECTIONS */
-
-.section {
-    padding: 22px 15px;
-}
-
-.section-title {
-    font-size: 21px;
-    border-left: 4px solid red;
-    padding-left: 10px;
-    margin-bottom: 18px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
 }
 
 /* FILTERS */
 
 .filters {
-    display: flex;
-    gap: 9px;
-    overflow-x: auto;
-    padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 15px 35px;
 }
 
-.filters button {
-    flex-shrink: 0;
-    padding: 9px 17px;
-    border-radius: 20px;
-    background: #181818;
-    border: 1px solid #444;
-    color: white;
-    cursor: pointer;
+.filter-btn {
+  padding: 9px 17px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.05);
+  color: #ccc;
+  border: 1px solid rgba(255,255,255,.12);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  transition: .3s;
 }
 
-.filters button.active,
-.filters button:hover {
-    background: red;
-    border-color: red;
+.filter-btn:hover,
+.filter-btn.active {
+  color: white;
+  background: rgba(255,23,68,.2);
+  border-color: var(--red);
+  box-shadow: 0 0 15px rgba(255,23,68,.3);
 }
 
-/* SERIES GRID */
+/* SECTION */
+
+.section {
+  padding: 15px 6% 45px;
+}
+
+.section-title {
+  font-family: Orbitron;
+  font-size: 19px;
+  margin-bottom: 25px;
+  border-left: 4px solid var(--red);
+  padding-left: 13px;
+}
+
+.section-title span {
+  color: var(--red);
+}
+
+/* CARDS */
 
 .series-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(175px,1fr));
+  gap: 22px;
 }
 
-/* SERIES CARD */
-
 .card {
-    background: #151515;
-    border: 1px solid #292929;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: .3s;
-    position: relative;
-    min-width: 0;
+  position: relative;
+  min-height: 265px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: linear-gradient(145deg,#240811,#10090c 50%,#080808);
+  transition: .35s;
+  isolation: isolate;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle,rgba(255,0,55,.35),transparent 65%);
+  filter: blur(30px);
+  z-index: -1;
+  transition: .4s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: red;
-    box-shadow: 0 0 15px #650000;
+  transform: translateY(-7px);
+  border-color: var(--red);
+  box-shadow: 0 10px 35px rgba(255,0,50,.2);
 }
 
-/* POSTER */
-
-.poster {
-    width: 100%;
-    aspect-ratio: 2 / 3;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #350000, #111);
+.card:hover::before {
+  transform: scale(1.4);
 }
 
-.poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
-    transition: transform .4s ease;
+.card-art {
+  height: 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 50%,var(--accent),transparent 65%),
+    linear-gradient(135deg,#171717,#090909);
 }
 
-.card:hover .poster img {
-    transform: scale(1.07);
+.card-art::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .25;
+  filter: blur(45px);
 }
 
-.poster-fallback {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff3333;
-    font-size: 17px;
-    font-weight: bold;
-    text-align: center;
-    padding: 12px;
+.card-art span {
+  font-family: Orbitron;
+  font-size: 30px;
+  font-weight: 800;
+  color: rgba(255,255,255,.9);
+  text-shadow: 0 0 20px var(--accent);
+  z-index: 1;
 }
-
-/* CARD CONTENT */
 
 .card-content {
-    padding: 12px;
+  padding: 14px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(15px);
 }
 
 .card h3 {
-    font-size: 15px;
-    margin-bottom: 8px;
-    min-height: 34px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 
-.price {
-    color: #ff3333;
-    font-weight: bold;
-    margin-bottom: 12px;
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  font-size: 10px;
+  color: #aaa;
+  margin-bottom: 12px;
 }
 
-.card-buttons {
-    display: flex;
-    gap: 6px;
+.genre {
+  color: #ff718c;
 }
 
-.card-buttons a {
-    flex: 1;
-    text-align: center;
-    padding: 9px 4px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: bold;
+.card-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.card-btn {
+  flex: 1;
+  padding: 9px 5px;
+  border-radius: 9px;
+  font-size: 11px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  font-family: inherit;
+  transition: .3s;
 }
 
 .details-btn {
-    background: #292929;
-    color: white;
+  background: rgba(255,23,68,.16);
+  border: 1px solid rgba(255,23,68,.6);
+  color: white;
 }
 
-.buy-btn {
-    background: red;
-    color: white;
+.details-btn:hover {
+  background: var(--red);
+  box-shadow: 0 0 15px var(--red);
 }
 
-/* FAVOURITES */
-
-.fav-btn {
-    position: absolute;
-    top: 9px;
-    right: 9px;
-    background: #111;
-    color: white;
-    border: 1px solid #555;
-    border-radius: 50%;
-    width: 34px;
-    height: 34px;
-    cursor: pointer;
-    font-size: 17px;
-    z-index: 5;
+.save-btn {
+  width: 38px;
+  flex: 0 0 38px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid #444;
+  color: white;
 }
 
-.fav-btn.saved {
-    color: red;
-    border-color: red;
+/* NOTICE */
+
+.notice {
+  margin: 10px 6% 45px;
+  padding: 25px;
+  border: 1px solid rgba(255,23,68,.4);
+  border-radius: 18px;
+  background: linear-gradient(120deg,rgba(255,0,55,.12),rgba(255,255,255,.03));
+  backdrop-filter: blur(20px);
+  text-align: center;
 }
 
-.badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: red;
-    padding: 5px 8px;
-    font-size: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    z-index: 5;
+.notice h2 {
+  color: var(--red);
+  font-size: 17px;
+  margin-bottom: 12px;
 }
 
-.empty {
-    color: #aaa;
-    text-align: center;
-    padding: 30px 10px;
-    display: none;
+.notice p {
+  color: #ccc;
+  font-size: 13px;
+  line-height: 2;
 }
 
-/* CUSTOMER NOTICE */
-
-.customer-notice {
-    margin: 25px 15px;
-    padding: 22px 16px;
-    text-align: center;
-    background: linear-gradient(135deg, #250000, #100000);
-    border: 1px solid red;
-    border-radius: 14px;
-    box-shadow: 0 0 15px #550000;
-}
-
-.customer-notice h2 {
-    color: #ff3333;
-    font-size: 19px;
-    margin-bottom: 14px;
-}
-
-.customer-notice p {
-    color: white;
-    font-size: 14px;
-    line-height: 1.8;
-}
-
-.notice-whatsapp {
-    display: inline-block;
-    margin-top: 18px;
-    padding: 12px 22px;
-    background: #25d366;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
+.notice a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 11px 20px;
+  color: white;
+  background: var(--red);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 12px;
+  box-shadow: 0 0 20px rgba(255,23,68,.3);
 }
 
 /* FOOTER */
 
 footer {
-    text-align: center;
-    background: #111;
-    padding: 25px 10px;
-    margin-top: 30px;
-    border-top: 1px solid red;
-    color: #aaa;
-    font-size: 12px;
+  padding: 30px 15px;
+  text-align: center;
+  background: rgba(0,0,0,.5);
+  border-top: 1px solid rgba(255,23,68,.2);
 }
 
-/* WHATSAPP BUTTON */
+footer h2 {
+  font-family: Orbitron;
+  font-size: 16px;
+}
+
+footer h2 span {
+  color: var(--red);
+}
+
+footer p {
+  color: #777;
+  font-size: 11px;
+  margin-top: 12px;
+}
 
 .whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 15px;
-    background: #25d366;
-    color: white;
-    padding: 13px 17px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    z-index: 999;
+  position: fixed;
+  bottom: 22px;
+  right: 20px;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #25d366;
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(37,211,102,.4);
 }
 
-/* RESPONSIVE */
-
-@media(min-width:650px) {
-    .series-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.empty {
+  text-align: center;
+  color: #888;
+  padding: 40px;
+  display: none;
 }
 
-@media(min-width:950px) {
-    .series-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
+@media(max-width:600px) {
+  header { padding: 15px 5%; }
+  .logo { font-size: 16px; }
+  .hero { padding-top: 45px; }
+  .section { padding-left: 4%; padding-right: 4%; }
+  .series-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 12px;
+  }
+  .card { min-height: 245px; }
+  .card-art { height: 125px; }
+  .card-content { padding: 11px; }
+  .card h3 { font-size: 12px; }
+  .card-info { font-size: 9px; }
 }
-</style></head><body><!-- LOADING SCREEN --><div id="lk-loader">
-    <div class="loader-logo">
-        LK <span>TV SERIES</span> HUB
-    </div><div class="loader-text">
-    WELCOME TO YOUR SERIES WORLD
-</div>
+</style>
+</head>
 
-<div class="loader-bar">
+<body>
+
+<div id="loader">
+  <div class="loader-logo">LK TV SERIES HUB</div>
+  <div class="loader-bar">
     <div class="loader-progress"></div>
+  </div>
 </div>
 
-</div><!-- HEADER --><header>
-    <div class="logo">LK <span>TV SERIES</span> HUB</div>
-    <p>YOUR ULTIMATE SERIES COLLECTION</p>
-</header><!-- HERO --><section class="hero">
-    <h1>WELCOME TO <span>LK SERIES HUB</span></h1>
-    <p>Discover Your Favourite TV Series Collection</p><div class="search-box">
-    <input
-        type="text"
-        id="search"
-        placeholder="Search your favourite series..."
-        oninput="renderSeries()"
-    >
+<header>
+  <div class="logo">LK TV <span>SERIES HUB</span></div>
+  <div class="header-tag">PREMIUM COLLECTION</div>
+</header>
+
+<section class="hero">
+  <div class="hero-label">WELCOME TO THE HUB</div>
+  <h1>DISCOVER <span>YOUR NEXT</span><br>FAVOURITE SERIES</h1>
+  <p>🔥 Premium TV Series Collection | Sinhala Information 🔥</p>
+</section>
+
+<div class="search-area">
+  <div class="search-box">
+    <span>🔍</span>
+    <input id="searchInput" type="text"
+      placeholder="ඔබට අවශ්‍ය Series එක සොයන්න...">
+  </div>
 </div>
 
-</section><!-- CATEGORIES --><section class="section">
-    <h2 class="section-title">CATEGORIES</h2><div class="filters">
-    <button class="active" onclick="setCategory('All',this)">All</button>
-    <button onclick="setCategory('Action',this)">Action</button>
-    <button onclick="setCategory('Drama',this)">Drama</button>
-    <button onclick="setCategory('Crime',this)">Crime</button>
-    <button onclick="setCategory('Horror',this)">Horror</button>
-    <button onclick="setCategory('Sci-Fi',this)">Sci-Fi</button>
-    <button onclick="setCategory('Fantasy',this)">Fantasy</button>
-    <button onclick="setCategory('Mystery',this)">Mystery</button>
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-category="All">All</button>
+  <button class="filter-btn" data-category="Action">Action</button>
+  <button class="filter-btn" data-category="Drama">Drama</button>
+  <button class="filter-btn" data-category="Crime">Crime</button>
+  <button class="filter-btn" data-category="Horror">Horror</button>
+  <button class="filter-btn" data-category="Sci-Fi">Sci-Fi</button>
+  <button class="filter-btn" data-category="Fantasy">Fantasy</button>
+  <button class="filter-btn" data-category="Mystery">Mystery</button>
 </div>
 
-</section><!-- TRENDING --><section class="section">
-    <h2 class="section-title">TRENDING SERIES</h2>
-    <div class="series-grid" id="trending"></div>
-</section><!-- TOP 10 --><section class="section">
-    <h2 class="section-title">TOP 10 SERIES</h2>
-    <div class="series-grid" id="top10"></div>
-</section><!-- WATCHLIST --><section class="section">
-    <h2 class="section-title">MY WATCHLIST</h2>
-    <div class="series-grid" id="watchlist"></div><div class="empty" id="emptyWatch">
-    No favourite series added yet.
+<section class="section">
+  <h2 class="section-title">🔥 <span>ALL</span> SERIES</h2>
+  <div class="series-grid" id="seriesGrid"></div>
+  <div class="empty" id="emptyMessage">Series හමු වුණේ නැහැ.</div>
+</section>
+
+<section class="section" id="watchlistSection" style="display:none">
+  <h2 class="section-title">❤️ MY <span>WATCHLIST</span></h2>
+  <div class="series-grid" id="watchlistGrid"></div>
+</section>
+
+<div class="notice">
+  <h2>📢 SPECIAL CUSTOMER NOTICE</h2>
+  <p>
+    ඔබට අවශ්‍ය ඕනෑම TV Series එකක් අපගේ Website එකේ නොමැති වුවද
+    අපෙන් ඉල්ලුම් කර ලබාගත හැකියි!<br>
+    ඔබට අවශ්‍ය Series එකේ නම අප වෙත එවන්න.
+  </p>
+  <a href="https://wa.me/94714540217" target="_blank">
+    📲 WHATSAPP CONTACT
+  </a>
 </div>
 
-</section><!-- ALL SERIES --><section class="section">
-    <h2 class="section-title">ALL SERIES COLLECTION</h2>
-    <div class="series-grid" id="allSeries"></div><div class="empty" id="emptySearch">
-    No series found!
-</div>
+<footer>
+  <h2>LK TV <span>SERIES HUB</span></h2>
+  <p>© 2026 LK TV SERIES HUB | ALL RIGHTS RESERVED</p>
+  <p>PREMIUM SERIES COLLECTION</p>
+</footer>
 
-</section><!-- CUSTOMER NOTICE --><section class="customer-notice"><h2>SPECIAL CUSTOMER NOTICE</h2>
-
-<p>
-    ඔබට අවශ්‍ය ඕනෑම TV Series එකක් අපගේ Website එකේ
-    නොමැති වුවද අපෙන් ඉල්ලුම් කර ලබාගත හැකියි!
-</p>
-
-<p style="color:#ff5555;font-weight:bold;margin-top:12px;">
-    ඔබට අවශ්‍ය Series එකේ නම WhatsApp හරහා අප වෙත එවන්න.
-</p>
-
-<a class="notice-whatsapp"
-href="https://wa.me/94714540217?text=Hello%20LK%20TV%20SERIES%20HUB%2C%20I%20want%20to%20request%20a%20TV%20Series."
-target="_blank" rel="noopener">
-    REQUEST A SERIES
-</a>
-
-</section><!-- FOOTER --><footer>
-    <h3 style="color:white;">LK TV SERIES HUB</h3>
-    <br>
-    YOUR ULTIMATE SERIES COLLECTION
-    <br><br>
-    © 2026 LK TV SERIES HUB
-    <br><br>
-    All Rights Reserved.
-</footer><!-- WHATSAPP BUTTON --><a class="whatsapp"
-href="https://wa.me/94714540217"
-target="_blank" rel="noopener">
-WhatsApp
-</a>
+<a class="whatsapp" href="https://wa.me/94714540217"
+target="_blank">✆</a>
 
 <script>
-
-/* SERIES DATA */
-
-const seriesList = [
-
-{name:"Breaking Bad",key:"breaking-bad",price:400,category:"Crime",trending:true,top:true},
-
-{name:"Sex Education",key:"sex-education",price:300,category:"Drama"},
-
-{name:"Vikings: Valhalla",key:"vikings-valhalla",price:200,category:"Action",trending:true},
-
-{name:"Game of Thrones",key:"game-of-thrones",price:500,category:"Fantasy",trending:true,top:true},
-
-{name:"Prison Break",key:"prison-break",price:450,category:"Action",trending:true,top:true},
-
-{name:"Peaky Blinders",key:"peaky-blinders",price:350,category:"Crime",top:true},
-
-{name:"The Walking Dead",key:"the-walking-dead",price:600,category:"Horror",trending:true},
-
-{name:"Money Heist",key:"money-heist",price:450,category:"Crime",trending:true,top:true},
-
-{name:"Teen Wolf",key:"teen-wolf",price:400,category:"Fantasy"},
-
-{name:"Stranger Things",key:"stranger-things",price:400,category:"Sci-Fi",trending:true,top:true},
-
-{name:"Reacher",key:"reacher",price:300,category:"Action"},
-
-{name:"True Blood",key:"true-blood",price:450,category:"Fantasy"},
-
-{name:"The Flash",key:"the-flash",price:500,category:"Sci-Fi"},
-
-{name:"IT: Welcome to Derry",key:"it-welcome-to-derry",price:100,category:"Horror"},
-
-{name:"House of the Dragon",key:"house-of-the-dragon",price:250,category:"Fantasy",top:true},
-
-{name:"One Piece",key:"one-piece",price:200,category:"Action"},
-
-{name:"Robinhood (2026)",key:"robinhood-2026",price:100,category:"Action"},
-
-{name:"Lost",key:"lost",price:600,category:"Mystery"},
-
-{name:"Outer Banks",key:"outer-banks",price:450,category:"Drama"},
-
-{name:"Kingdom",key:"kingdom",price:250,category:"Horror"},
-
-{name:"From",key:"from",price:300,category:"Mystery",trending:true},
-
-{name:"Dark",key:"dark",price:300,category:"Sci-Fi"},
-
-{name:"Duty After School",key:"duty-after-school",price:150,category:"Action"},
-
-{name:"Cobra Kai",key:"cobra-kai",price:350,category:"Action"},
-
-{name:"The 100",key:"the-100",price:500,category:"Sci-Fi"},
-
-{name:"Lucifer",key:"lucifer",price:500,category:"Fantasy",top:true},
-
-{name:"All of Us Are Dead",key:"all-of-us-are-dead",price:150,category:"Horror"},
-
-{name:"Squid Game",key:"squid-game",price:300,category:"Drama",trending:true},
-
-{name:"Chernobyl",key:"chernobyl",price:150,category:"Drama"},
-
-{name:"Sherlock",key:"sherlock",price:150,category:"Mystery"},
-
-{name:"Better Call Saul",key:"better-call-saul",price:450,category:"Crime"},
-
-{name:"The Boys",key:"the-boys",price:300,category:"Action",top:true},
-
-{name:"Band of Brothers",key:"band-of-brothers",price:150,category:"Drama"},
-
-{name:"The Last of Us",key:"the-last-of-us",price:200,category:"Sci-Fi"},
-
-{name:"Dexter",key:"dexter",price:550,category:"Crime"},
-
-{name:"Narcos",key:"narcos",price:300,category:"Crime"}
-
+const series = [
+  ["breaking-bad","Breaking Bad","Crime, Drama","9.5"],
+  ["sex-education","Sex Education","Comedy, Drama","8.2"],
+  ["vikings-valhalla","Vikings: Valhalla","Action, Drama","7.3"],
+  ["game-of-thrones","Game of Thrones","Fantasy, Drama","9.2"],
+  ["prison-break","Prison Break","Action, Crime","8.3"],
+  ["peaky-blinders","Peaky Blinders","Crime, Drama","8.7"],
+  ["the-walking-dead","The Walking Dead","Horror, Drama","8.1"],
+  ["money-heist","Money Heist","Crime, Drama","8.2"],
+  ["teen-wolf","Teen Wolf","Fantasy, Drama","7.7"],
+  ["stranger-things","Stranger Things","Sci-Fi, Horror","8.6"],
+  ["reacher","Reacher","Action, Crime","8.0"],
+  ["true-blood","True Blood","Fantasy, Drama","7.9"],
+  ["the-flash","The Flash","Action, Sci-Fi","7.5"],
+  ["it-welcome-to-derry","IT: Welcome to Derry","Horror","-"],
+  ["house-of-the-dragon","House of the Dragon","Fantasy, Drama","8.4"],
+  ["one-piece","One Piece","Action, Fantasy","8.3"],
+  ["robinhood-2026","Robinhood (2026)","Action, Drama","-"],
+  ["lost","Lost","Mystery, Drama","8.3"],
+  ["outer-banks","Outer Banks","Action, Drama","7.5"],
+  ["kingdom","Kingdom","Action, Horror","8.3"],
+  ["from","From","Horror, Mystery","7.8"],
+  ["dark","Dark","Sci-Fi, Mystery","8.7"],
+  ["duty-after-school","Duty After School","Action, Sci-Fi","7.0"],
+  ["cobra-kai","Cobra Kai","Action, Drama","8.4"],
+  ["the-100","The 100","Sci-Fi, Drama","7.5"],
+  ["lucifer","Lucifer","Crime, Fantasy","8.0"],
+  ["all-of-us-are-dead","All of Us Are Dead","Horror, Action","7.5"],
+  ["squid-game","Squid Game","Drama, Thriller","8.0"],
+  ["chernobyl","Chernobyl","Historical Drama","9.3"],
+  ["sherlock","Sherlock","Crime, Mystery","9.0"],
+  ["better-call-saul","Better Call Saul","Crime, Drama","9.0"],
+  ["the-boys","The Boys","Action, Drama","8.5"],
+  ["band-of-brothers","Band of Brothers","War, Drama","9.4"],
+  ["the-last-of-us","The Last of Us","Drama, Sci-Fi","8.7"],
+  ["dexter","Dexter","Crime, Drama","8.6"],
+  ["narcos","Narcos","Crime, Drama","8.7"]
 ];
 
-/* WATCHLIST */
+const colors = [
+ "#ff1744","#d500f9","#ff5722","#b71c1c",
+ "#ff0033","#880e4f","#ff4081","#c62828"
+];
 
 let selectedCategory = "All";
-
-let favourites = [];
-
-try {
-    favourites = JSON.parse(
-        localStorage.getItem("lkWatchlist") || "[]"
-    );
-
-    if (!Array.isArray(favourites)) favourites = [];
-
-} catch (error) {
-    favourites = [];
-}
-
-/* CARD CREATION */
+let watchlist = JSON.parse(localStorage.getItem("lkWatchlist") || "[]");
 
 function createCard(item) {
+  const [slug,name,genre,rating] = item;
+  const initial = name.substring(0,1).toUpperCase();
+  const saved = watchlist.includes(slug);
 
-    let saved = favourites.includes(item.key);
+  return `
+    <article class="card">
+      <div class="card-art" style="--accent:${colors[series.indexOf(item)%colors.length]}">
+        <span>${initial}</span>
+      </div>
 
-    return `
-    <div class="card">
+      <div class="card-content">
+        <h3>${name}</h3>
 
-        ${item.trending ? '<span class="badge">TRENDING</span>' : ''}
-
-        <button class="fav-btn ${saved ? 'saved' : ''}"
-        onclick="toggleFavourite('${item.key}')">
-        ${saved ? '♥' : '♡'}
-        </button>
-
-        <div class="poster">
-
-            <div class="poster-fallback">
-                ${item.name}
-            </div>
-
-            <img
-                data-show="${item.key}"
-                alt="${item.name} Poster"
-                loading="lazy"
-            >
-
+        <div class="card-info">
+          <span class="genre">${genre}</span>
+          <span>⭐ ${rating}</span>
         </div>
 
-        <div class="card-content">
+        <div class="card-actions">
+          <a class="card-btn details-btn"
+             href="series.html?show=${slug}">
+             Details →
+          </a>
 
-            <h3>${item.name}</h3>
-
-            <div class="price">Rs. ${item.price}/=</div>
-
-            <div class="card-buttons">
-
-                <a class="details-btn"
-                href="series.html?show=${encodeURIComponent(item.key)}">
-                DETAILS
-                </a>
-
-                <a class="buy-btn"
-                href="https://wa.me/94714540217?text=${encodeURIComponent('I want to order '+item.name)}"
-                target="_blank" rel="noopener">
-                BUY NOW
-                </a>
-
-            </div>
-
+          <button class="card-btn save-btn"
+            onclick="toggleWatchlist('${slug}')">
+            ${saved ? "❤️" : "♡"}
+          </button>
         </div>
-    </div>
-    `;
+      </div>
+    </article>
+  `;
 }
-
-/* POSTER LOADER */
-
-const posterCache = {};
-const posterRequests = {};
-
-async function getPoster(item) {
-
-    if (posterCache[item.key]) {
-        return posterCache[item.key];
-    }
-
-    if (posterRequests[item.key]) {
-        return posterRequests[item.key];
-    }
-
-    posterRequests[item.key] = (async () => {
-
-        try {
-
-            const response = await fetch(
-                "https://api.tvmaze.com/singlesearch/shows?q=" +
-                encodeURIComponent(item.name)
-            );
-
-            if (!response.ok) return null;
-
-            const data = await response.json();
-
-            const poster =
-                data.image?.original ||
-                data.image?.medium ||
-                null;
-
-            if (poster) {
-                posterCache[item.key] = poster;
-            }
-
-            return poster;
-
-        } catch (error) {
-
-            console.log("Poster unavailable:", item.name);
-            return null;
-
-        }
-
-    })();
-
-    return posterRequests[item.key];
-}
-
-async function loadPosters() {
-
-    const images = document.querySelectorAll(
-        ".poster img[data-show]"
-    );
-
-    for (const img of images) {
-
-        if (img.dataset.loaded === "true") continue;
-
-        img.dataset.loaded = "true";
-
-        const key = img.dataset.show;
-
-        const item = seriesList.find(
-            series => series.key === key
-        );
-
-        if (!item) continue;
-
-        const poster = await getPoster(item);
-
-        if (!poster || !img.isConnected) continue;
-
-        img.onload = function() {
-
-            img.style.display = "block";
-
-            img.previousElementSibling.style.display = "none";
-
-        };
-
-        img.onerror = function() {
-
-            img.style.display = "none";
-
-        };
-
-        img.src = poster;
-
-    }
-
-}
-
-/* RENDER SERIES */
 
 function renderSeries() {
+  const search = document.getElementById("searchInput")
+    .value.toLowerCase();
 
-    const search = document
-        .getElementById("search")
-        .value.toLowerCase();
+  const filtered = series.filter(item => {
+    const matchesSearch =
+      item[1].toLowerCase().includes(search) ||
+      item[2].toLowerCase().includes(search);
 
-    const filtered = seriesList.filter(item => {
+    const matchesCategory =
+      selectedCategory === "All" ||
+      item[2].toLowerCase().includes(selectedCategory.toLowerCase());
 
-        const matchesSearch =
-            item.name.toLowerCase().includes(search);
+    return matchesSearch && matchesCategory;
+  });
 
-        const matchesCategory =
-            selectedCategory === "All" ||
-            item.category === selectedCategory;
+  document.getElementById("seriesGrid").innerHTML =
+    filtered.map(createCard).join("");
 
-        return matchesSearch && matchesCategory;
-
-    });
-
-    document.getElementById("allSeries").innerHTML =
-        filtered.map(createCard).join("");
-
-    document.getElementById("emptySearch").style.display =
-        filtered.length ? "none" : "block";
-
-    document.getElementById("trending").innerHTML =
-        seriesList
-        .filter(item => item.trending)
-        .map(createCard).join("");
-
-    document.getElementById("top10").innerHTML =
-        seriesList
-        .filter(item => item.top)
-        .map(createCard).join("");
-
-    const favItems = seriesList.filter(
-        item => favourites.includes(item.key)
-    );
-
-    document.getElementById("watchlist").innerHTML =
-        favItems.map(createCard).join("");
-
-    document.getElementById("emptyWatch").style.display =
-        favItems.length ? "none" : "block";
-
-    loadPosters();
-
+  document.getElementById("emptyMessage").style.display =
+    filtered.length ? "none" : "block";
 }
 
-/* FAVOURITES */
+function toggleWatchlist(slug) {
+  if (watchlist.includes(slug)) {
+    watchlist = watchlist.filter(item => item !== slug);
+  } else {
+    watchlist.push(slug);
+  }
 
-function toggleFavourite(key) {
-
-    if (favourites.includes(key)) {
-
-        favourites = favourites.filter(
-            item => item !== key
-        );
-
-    } else {
-
-        favourites.push(key);
-
-    }
-
-    localStorage.setItem(
-        "lkWatchlist",
-        JSON.stringify(favourites)
-    );
-
-    renderSeries();
-
+  localStorage.setItem("lkWatchlist",JSON.stringify(watchlist));
+  renderSeries();
+  renderWatchlist();
 }
 
-/* CATEGORY FILTER */
+function renderWatchlist() {
+  const section = document.getElementById("watchlistSection");
 
-function setCategory(category,button) {
+  const saved = series.filter(item => watchlist.includes(item[0]));
 
-    selectedCategory = category;
+  section.style.display = saved.length ? "block" : "none";
 
-    document.querySelectorAll(".filters button")
-    .forEach(btn => btn.classList.remove("active"));
+  document.getElementById("watchlistGrid").innerHTML =
+    saved.map(createCard).join("");
+}
+
+document.getElementById("searchInput")
+  .addEventListener("input",renderSeries);
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+  button.addEventListener("click",() => {
+    document.querySelectorAll(".filter-btn")
+      .forEach(btn => btn.classList.remove("active"));
 
     button.classList.add("active");
-
+    selectedCategory = button.dataset.category;
     renderSeries();
-
-}
-
-/* START WEBSITE */
-
-renderSeries();
-
-/* LOADING ANIMATION */
-
-window.addEventListener("load", function() {
-
-    setTimeout(function() {
-
-        document.getElementById("lk-loader")
-        .classList.add("hide");
-
-    }, 2000);
-
+  });
 });
 
-/* LOADER FAILSAFE */
+renderSeries();
+renderWatchlist();
 
-setTimeout(function() {
+window.addEventListener("load",() => {
+  setTimeout(() => {
+    document.getElementById("loader").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("loader").style.display = "none";
+    },500);
+  },1800);
+});
+</script>
 
-    document.getElementById("lk-loader")
-    .classList.add("hide");
-
-}, 6000);
-
-</script></body>
+</body>
 </html>
